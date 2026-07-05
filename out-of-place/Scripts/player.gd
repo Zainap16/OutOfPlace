@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+@onready var blob_guy_all_forms_col: Node3D = $"BlobGuy_All_Forms-col"
 
 
 var targetPosition: Vector3

@@ -1,7 +1,12 @@
 extends Node3D
 #need to add code so when player presses on player character it wont break and or make it so only floors can be tap-able
-
+var anxiety = 6
 @export var excluded: Array[Node3D] = []
+@onready var anxiety_meter_3d: Node3D = $AnxietyMeter3D
+#
+#func _ready() -> void:
+	#anxiety_meter_3d.take_damage(10)
+	#
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_mouse_click"):

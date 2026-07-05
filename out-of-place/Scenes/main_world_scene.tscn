@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cwd3ej368pqd2" path="res://Scripts/main_world_scene.gd" id="1_h8oru"]
 [ext_resource type="PackedScene" uid="uid://dn5w3hakg0g1l" path="res://Scenes/Characters/Player.tscn" id="2_ka15s"]
 [ext_resource type="PackedScene" uid="uid://7hbv7kkdspbr" path="res://Scenes/isometric_camera.tscn" id="3_oofqc"]
+[ext_resource type="PackedScene" uid="uid://c1bjm2mxrsw7x" path="res://Scenes/anxiety_meter.tscn" id="4_1ur3l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m8omb"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -41,3 +42,6 @@ material = SubResource("StandardMaterial3D_m8omb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77583885, 0, 0.9238796)
 
 [node name="cameraPivot" parent="." unique_id=776636087 instance=ExtResource("3_oofqc")]
+
+[node name="AnxietyMeter3D" parent="cameraPivot" unique_id=194683523 instance=ExtResource("4_1ur3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.14212, 15.397285, 0)
