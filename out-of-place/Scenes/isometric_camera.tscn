@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://7hbv7kkdspbr"]
+
+[ext_resource type="Script" uid="uid://delrsrie3ocpw" path="res://Scripts/camera_pivot.gd" id="1_my5kh"]
+
+[node name="cameraPivot" type="Node3D" unique_id=776636087]
+script = ExtResource("1_my5kh")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1995177369]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 10.880898, 8.917381)
+projection = 1
+size = 20.0

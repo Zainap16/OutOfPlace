@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://dn5w3hakg0g1l"]
 
 [ext_resource type="Script" uid="uid://dw46exyu1e58o" path="res://Scripts/player.gd" id="1_gjot8"]
-[ext_resource type="Script" uid="uid://delrsrie3ocpw" path="res://Scripts/camera_pivot.gd" id="2_0el0d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i64ol"]
 resource_name = "Black"
@@ -345,9 +344,3 @@ mesh = SubResource("ArrayMesh_7idui")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1596815659]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.044338107, 0.6967225, 0.012568772)
 shape = SubResource("BoxShape3D_gjot8")
-
-[node name="CameraPivot" type="Node3D" parent="." unique_id=1931218078]
-script = ExtResource("2_0el0d")
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1920528918]
-transform = Transform3D(0.9090835, 0, -0.41661397, 0, 1, 0, 0.41661397, 0, 0.9090835, -0.5366007, 1.7741505, 2.1635797)

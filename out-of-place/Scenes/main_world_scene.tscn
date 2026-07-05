@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cwd3ej368pqd2" path="res://Scripts/main_world_scene.gd" id="1_h8oru"]
 [ext_resource type="PackedScene" uid="uid://dn5w3hakg0g1l" path="res://Scenes/Characters/Player.tscn" id="2_ka15s"]
+[ext_resource type="PackedScene" uid="uid://7hbv7kkdspbr" path="res://Scenes/isometric_camera.tscn" id="3_oofqc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m8omb"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -31,10 +32,12 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1694258855]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08795166, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.293396, -0.08795166, -4.9687805)
 use_collision = true
-size = Vector3(34.95703, 0.16809082, 31.875244)
+size = Vector3(97.499146, 0.16809082, 93.36322)
 material = SubResource("StandardMaterial3D_m8omb")
 
 [node name="Player" parent="." unique_id=1791364033 instance=ExtResource("2_ka15s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77583885, 0, 0.9238796)
+
+[node name="cameraPivot" parent="." unique_id=776636087 instance=ExtResource("3_oofqc")]
