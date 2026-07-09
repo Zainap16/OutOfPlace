@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://dpyb14t0burwd"]
+
+[ext_resource type="Script" uid="uid://cjdja0or3eqie" path="res://Scenes/MiniGameThree/memory_game.gd" id="1_0ii5u"]
+[ext_resource type="Script" uid="uid://rp4wjwmiwmyx" path="res://Scripts/pattern_manager.gd" id="1_cjqvf"]
+[ext_resource type="Script" uid="uid://bp3w2osp58vvp" path="res://Scenes/MiniGameThree/red.gd" id="2_k8d01"]
+[ext_resource type="Script" uid="uid://mmjm13q0krxf" path="res://Scenes/MiniGameThree/green.gd" id="3_sv63t"]
+[ext_resource type="Texture2D" uid="uid://csrp2lxarxw26" path="res://Assets/red.png" id="3_y5phe"]
+[ext_resource type="Script" uid="uid://bmy6wdhplia6" path="res://Scenes/MiniGameThree/blue.gd" id="4_fpr0d"]
+[ext_resource type="Texture2D" uid="uid://dj54mxwtb0f8o" path="res://Assets/green.png" id="5_hodau"]
+[ext_resource type="Script" uid="uid://drpfrx206tmfq" path="res://Scenes/MiniGameThree/yellow.gd" id="5_l1smm"]
+[ext_resource type="Texture2D" uid="uid://bur1xhsxx6wxs" path="res://Assets/blue.png" id="7_5tu6r"]
+[ext_resource type="Texture2D" uid="uid://n6m00lp0lxld" path="res://Assets/yellow.png" id="9_ea561"]
+
+[node name="MemoryGame" type="Control" unique_id=1526977400]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ii5u")
+
+[node name="PatternManager" type="Node" parent="." unique_id=455225554]
+script = ExtResource("1_cjqvf")
+
+[node name="Buttons" type="GridContainer" parent="." unique_id=853130137]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 126.0
+offset_right = 386.0
+offset_bottom = 465.0
+columns = 2
+
+[node name="Red" type="TextureButton" parent="Buttons" unique_id=1742163917]
+layout_mode = 2
+texture_normal = ExtResource("3_y5phe")
+script = ExtResource("2_k8d01")
+
+[node name="Green" type="TextureButton" parent="Buttons" unique_id=38526411]
+layout_mode = 2
+texture_normal = ExtResource("5_hodau")
+script = ExtResource("3_sv63t")
+colour_id = 1
+
+[node name="Blue" type="TextureButton" parent="Buttons" unique_id=788588144]
+layout_mode = 2
+texture_normal = ExtResource("7_5tu6r")
+script = ExtResource("4_fpr0d")
+colour_id = 2
+
+[node name="Yellow" type="TextureButton" parent="Buttons" unique_id=1722691656]
+layout_mode = 2
+texture_normal = ExtResource("9_ea561")
+script = ExtResource("5_l1smm")
+colour_id = 3
+
+[node name="FlashTimer" type="Timer" parent="." unique_id=469010436]
+
+[node name="DelayTimer" type="Timer" parent="." unique_id=1697375697]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1658017593]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1508379908]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score:"
+
+[node name="StatusLabel" type="Label" parent="CanvasLayer" unique_id=95578462]
+offset_left = -1.0
+offset_top = 36.0
+offset_right = 53.0
+offset_bottom = 59.0
+text = "Status:"
+
+[node name="RestartButton" type="Button" parent="." unique_id=1634546038]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 50.0
+offset_right = 259.0
+offset_bottom = 81.0
+text = "RESTART"
+
+[node name="GameOverPanel" type="Panel" parent="." unique_id=145452141]
+visible = false
+layout_mode = 0
+offset_right = 51.30057
+offset_bottom = 29.564743
+scale = Vector2(18.420849, 14.578176)
+
+[node name="Label" type="Label" parent="GameOverPanel" unique_id=1237636716]
+layout_mode = 0
+offset_right = 30.67177
+offset_bottom = 9.39761
+theme_override_font_sizes/font_size = 5
+text = "GAME OVER"
+
+[connection signal="pressed" from="Buttons/Red" to="PatternManager" method="_on_red_pressed"]
+[connection signal="pressed" from="Buttons/Green" to="PatternManager" method="_on_green_pressed"]
+[connection signal="pressed" from="Buttons/Blue" to="PatternManager" method="_on_blue_pressed"]
+[connection signal="pressed" from="Buttons/Yellow" to="PatternManager" method="_on_yellow_pressed"]
