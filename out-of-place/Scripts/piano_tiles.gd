@@ -7,7 +7,7 @@ extends Node3D # Or Node, depending on your PianoTiles type
 #func _input(_event: InputEvent) -> void:
 	#if Input.is_action_just_pressed("enable_piano_tiles"):
 		#start_minigame()
-
+#test
 func _ready():
 	stop_minigame()
 
