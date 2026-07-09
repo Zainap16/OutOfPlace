@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dbmqpjrjklmgm"]
+
+[ext_resource type="Texture2D" uid="uid://oij2p8n0r41b" path="res://icon.svg" id="1_nmbxx"]
+[ext_resource type="Script" uid="uid://c2qykfw4s3wol" path="res://Scripts/player_cursor.gd" id="2_lvcok"]
+[ext_resource type="Script" uid="uid://4rdquatqw5ib" path="res://Scripts/circle.gd" id="2_r7l83"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_feoht"]
+radius = 74.953316
+
+[node name="StayInTheCircle" type="Node2D" unique_id=92502879]
+
+[node name="Circle" type="Area2D" parent="." unique_id=1265489889 node_paths=PackedStringArray("player_cursor")]
+position = Vector2(443, 478)
+scale = Vector2(4.8689356, 4.8689356)
+script = ExtResource("2_r7l83")
+player_cursor = NodePath("../PlayerCursor")
+
+[node name="Sprite2DCircle" type="Sprite2D" parent="Circle" unique_id=990423893]
+texture = ExtResource("1_nmbxx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Circle" unique_id=1541891535]
+shape = SubResource("CircleShape2D_feoht")
+debug_color = Color(0.98549634, 0, 0.3378182, 0.41960785)
+
+[node name="PlayerCursor" type="Node2D" parent="." unique_id=1045429400]
+script = ExtResource("2_lvcok")
+
+[node name="Timer" type="Timer" parent="." unique_id=1856915443]
+autostart = true
+
+[node name="GameStartLabel" type="Label" parent="." unique_id=1373740291]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="timeout" from="Timer" to="Circle" method="_on_timer_timeout"]
