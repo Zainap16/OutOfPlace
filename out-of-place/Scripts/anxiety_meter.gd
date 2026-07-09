@@ -21,7 +21,8 @@ func _set_anxiety_meter(new_anxiety_meter):
 	value = anxiety_meter
 
 	if anxiety_meter <= 0:
-		queue_free()
+		anxiety_meter = 0
+		return
 
 	if anxiety_meter < pre_anxiety_meter:
 		timer.start()

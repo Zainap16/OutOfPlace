@@ -3,21 +3,22 @@
 [ext_resource type="Script" uid="uid://bxcnq17g0lk61" path="res://Scripts/mini_game_one.gd" id="1_3plo5"]
 [ext_resource type="Texture2D" uid="uid://c7lyjnchjuc35" path="res://Assets/Mock_Assets/road/road.png" id="2_c7tmp"]
 [ext_resource type="PackedScene" uid="uid://xdqukx77lw12" path="res://Scenes/MiniGameOne/arrow_up.tscn" id="3_swv4p"]
-[ext_resource type="Texture2D" uid="uid://l7tha5p88vmo" path="res://Assets/Mock_Assets/arrow_button/left/arrow_button_left1.png" id="4_0y1wl"]
-[ext_resource type="Texture2D" uid="uid://chh0cmh7s2qid" path="res://Assets/Mock_Assets/arrow_button/left/arrow_button_left2.png" id="5_8kvnj"]
-[ext_resource type="Texture2D" uid="uid://evk5sxb5jj5a" path="res://Assets/Mock_Assets/arrow_button/right/arrow_button_right1.png" id="6_ny383"]
-[ext_resource type="Texture2D" uid="uid://0c5uib7s3f0f" path="res://Assets/Mock_Assets/arrow_button/right/arrow_button_right2.png" id="7_g2lrp"]
+[ext_resource type="Texture2D" uid="uid://do7tscq6j2r2m" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_Grey_Right.png" id="4_0y1wl"]
+[ext_resource type="Texture2D" uid="uid://k7wfftw64cf2" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_White_Right.png" id="5_8kvnj"]
+[ext_resource type="Texture2D" uid="uid://ce38w3xawvryi" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_Grey_Left_.png" id="6_swv4p"]
+[ext_resource type="Texture2D" uid="uid://he88b8kqrx62" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_White_Left.png" id="7_0y1wl"]
 [ext_resource type="PackedScene" uid="uid://divs3kucqcfph" path="res://Scenes/MiniGameOne/conductor.tscn" id="8_c7tmp"]
 [ext_resource type="AudioStream" uid="uid://bbqhuiypbmulr" path="res://Music/Grieg In the Hall of the Mountain King.mp3" id="9_swv4p"]
+[ext_resource type="Texture2D" uid="uid://oij2p8n0r41b" path="res://icon.svg" id="10_0y1wl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3plo5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_ny383")
+"texture": ExtResource("4_0y1wl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_g2lrp")
+"texture": ExtResource("5_8kvnj")
 }],
 "loop": true,
 "name": &"default",
@@ -28,10 +29,10 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_0y1wl")
+"texture": ExtResource("6_swv4p")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_8kvnj")
+"texture": ExtResource("7_0y1wl")
 }],
 "loop": true,
 "name": &"default",
@@ -49,15 +50,18 @@ centered = false
 
 [node name="ArrowUp" parent="." unique_id=43299780 instance=ExtResource("3_swv4p")]
 position = Vector2(160, 164)
+scale = Vector2(0.046296306, 0.046296306)
 input = "camera_up"
 
 [node name="ArrowRight" parent="." unique_id=525090198 instance=ExtResource("3_swv4p")]
-position = Vector2(200, 164)
+position = Vector2(202, 164)
+scale = Vector2(0.044444434, 0.044444434)
 sprite_frames = SubResource("SpriteFrames_3plo5")
 input = "camera_right"
 
 [node name="ArrowLeft" parent="." unique_id=1607403687 instance=ExtResource("3_swv4p")]
 position = Vector2(120, 164)
+scale = Vector2(0.042592593, 0.042592593)
 sprite_frames = SubResource("SpriteFrames_c7tmp")
 input = "camera_left"
 
@@ -77,6 +81,12 @@ offset_bottom = 93.0
 [node name="Conductor" parent="." unique_id=2081456583 instance=ExtResource("8_c7tmp")]
 stream = ExtResource("9_swv4p")
 bpm = 150
+
+[node name="Sprite2D" type="Sprite2D" parent="Conductor" unique_id=213067072]
+position = Vector2(103.125, -13.75)
+scale = Vector2(0.140625, 0.140625)
+texture = ExtResource("10_0y1wl")
+offset = Vector2(120, -16)
 
 [connection signal="beat" from="Conductor" to="." method="_on_Conductor_beat"]
 [connection signal="measure" from="Conductor" to="." method="_on_Conductor_measure"]

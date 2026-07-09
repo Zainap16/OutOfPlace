@@ -17,13 +17,16 @@ var time_off_beat = 0.0
 
 signal beat(position)
 signal measure(position)
-
-
+##is game active? true/false
+var game_started := false
 func _ready():
 	sec_per_beat = 60.0 / bpm
 
 
 func _physics_process(_delta):
+	#if !game_active:
+		#return
+
 	if playing:
 		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
 		song_position -= AudioServer.get_output_latency()
@@ -72,3 +75,10 @@ func _on_StartTimer_timeout():
 		play()
 		$StartTimer.stop()
 	_report_beat()
+	
+func start_game():
+	if game_started:
+		return
+
+	game_started = true
+	play_with_beat_offset(4) # or whatever countdown you want

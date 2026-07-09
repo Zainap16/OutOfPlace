@@ -10,4 +10,7 @@ func _ready():
 #
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
-		anxiety_meter.anxiety_meter -= 10
+		if anxiety_meter.value <= 0:
+			return
+		else:
+			anxiety_meter.take_damage(10)

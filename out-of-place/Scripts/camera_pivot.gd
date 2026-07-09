@@ -7,6 +7,8 @@ extends Node3D
 @export var minZoom = 8
 
 @onready var camera_3d: Camera3D = $Camera3D
+##pause wasd camera control when false
+@export var controls_enabled := true
 
 func _ready() -> void:
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -29,7 +31,8 @@ func _camera_zoom():
 	camera_3d.size = clamp(camera_3d.size, minZoom, maxZoom)
 
 func _physics_process(_delta: float) -> void:
-	_camera_movement()
+	if controls_enabled:
+		_camera_movement()
 
 ##WASD to move camera
 func _camera_movement():

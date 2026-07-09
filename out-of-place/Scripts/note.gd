@@ -4,6 +4,8 @@ const TARGET_Y = 164
 const SPAWN_Y = -16
 const DIST_TO_TARGET = TARGET_Y - SPAWN_Y
 
+#spawn vectors x
+
 const LEFT_LANE_SPAWN = Vector2(120, SPAWN_Y)
 const CENTRE_LANE_SPAWN = Vector2(160, SPAWN_Y)
 const RIGHT_LANE_SPAWN = Vector2(200, SPAWN_Y)

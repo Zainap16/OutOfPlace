@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://xdqukx77lw12"]
 
-[ext_resource type="Texture2D" uid="uid://d1r04h0wciweo" path="res://Assets/Mock_Assets/arrow_button/up/arrow_button_up1.png" id="1_lh1ye"]
-[ext_resource type="Texture2D" uid="uid://ceckyfy0eeqf2" path="res://Assets/Mock_Assets/arrow_button/up/arrow_button_up2.png" id="2_usbm4"]
+[ext_resource type="Texture2D" uid="uid://cbcflos7t0isp" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_Grey_Up.png" id="1_usbm4"]
+[ext_resource type="Texture2D" uid="uid://423bvdsijgfm" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_White_Up.png" id="2_y7x8v"]
 [ext_resource type="Script" uid="uid://vhip2j6263ks" path="res://Scripts/arrow_up.gd" id="3_usbm4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y7x8v"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_lh1ye")
+"texture": ExtResource("1_usbm4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_usbm4")
+"texture": ExtResource("2_y7x8v")
 }],
 "loop": true,
 "name": &"default",
@@ -19,13 +19,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh1ye"]
-size = Vector2(12, 4)
+size = Vector2(539, 138)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_usbm4"]
-size = Vector2(8, 18)
+size = Vector2(252, 612)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7x8v"]
-size = Vector2(8, 24)
+size = Vector2(182, 490)
 
 [node name="ArrowUp" type="AnimatedSprite2D" unique_id=43299780]
 sprite_frames = SubResource("SpriteFrames_y7x8v")
@@ -34,6 +34,7 @@ script = ExtResource("3_usbm4")
 [node name="PerfectArea" type="Area2D" parent="." unique_id=873642068]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PerfectArea" unique_id=312676089]
+position = Vector2(-2.5, 0)
 shape = SubResource("RectangleShape2D_lh1ye")
 debug_color = Color(0, 0.64308286, 0.31196085, 0.41960785)
 

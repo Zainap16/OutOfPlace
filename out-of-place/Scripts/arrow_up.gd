@@ -8,7 +8,7 @@ var current_note = null
 @export var input = ""
 
 
-func _unhandled_input(event):
+func _input(event):
 	if event.is_action(input):
 		if event.is_action_pressed(input, false):
 			if current_note != null:

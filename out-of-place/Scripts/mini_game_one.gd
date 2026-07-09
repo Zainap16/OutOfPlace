@@ -159,3 +159,4 @@ func increment_score(by):
 func reset_combo():
 	combo = 0
 	$Combo.text = ""
+	

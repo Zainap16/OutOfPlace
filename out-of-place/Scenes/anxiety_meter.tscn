@@ -30,12 +30,12 @@ script = ExtResource("1_e8jmg")
 texture = SubResource("ViewportTexture_vaffi")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=446633383]
-size = Vector2i(300, 40)
+size = Vector2i(500, 80)
 
 [node name="AnxietyMeter" type="ProgressBar" parent="SubViewport" unique_id=1541876107]
 z_index = 1
-offset_right = 300.0
-offset_bottom = 40.0
+offset_right = 500.0
+offset_bottom = 80.0
 theme_override_styles/background = SubResource("StyleBoxEmpty_e8jmg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vaffi")
 value = 50.0

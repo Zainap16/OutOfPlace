@@ -1,14 +1,19 @@
 extends Node3D
 #need to add code so when player presses on player character it wont break and or make it so only floors can be tap-able
-var anxiety = 6
+
 @export var excluded: Array[Node3D] = []
-@onready var anxiety_meter_3d: Node3D = $AnxietyMeter3D
-#
-#func _ready() -> void:
-	#anxiety_meter_3d.take_damage(10)
-	#
+##make mini game work controls and pauses player movement
+@export var playing_minigame := false
+@onready var mini_viewport : SubViewport = $PianoTiles/SubViewport
+@onready var mini_game_one: Node2D = $PianoTiles/SubViewport/MiniGameOne
 
 func _input(event: InputEvent) -> void:
+	if playing_minigame:
+		mini_viewport.push_input(event)
+		return
+	if playing_minigame == false:
+		pass
+
 	if Input.is_action_just_pressed("left_mouse_click"):
 		var player = get_tree().get_first_node_in_group("player")
 		player.targetPosition = _get_3d_mouse_position(event.position)
@@ -29,3 +34,8 @@ func _get_3d_mouse_position(mousePosition2D):
 			return result.position
 
 		return Vector3.ZERO
+
+
+#to start game:
+#mini_game.start_game()
+#playing_minigame = true
