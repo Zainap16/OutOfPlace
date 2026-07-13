@@ -1,5 +1,7 @@
 extends Node2D
 
+signal game_finished
+
 var score = 0
 var combo = 0
 
@@ -26,6 +28,9 @@ var rand = 0
 var note = load("res://Scenes/MiniGameOne/note.tscn")
 var instance
 
+@export var max_misses = 5
+@onready var lose_label: Label = $LoseLabel
+var player_lost_piano_tiles : bool = false
 
 func _ready():
 	randomize()
@@ -144,6 +149,10 @@ func increment_score(by):
 		okay += 1
 	else:
 		missed += 1
+		if missed >= max_misses:
+			lose_label.text = "Missed/Extra CLicks: "+ str(missed)
+			player_lost_piano_tiles = true
+			game_over()
 	
 	
 	score += by * combo
@@ -159,4 +168,15 @@ func increment_score(by):
 func reset_combo():
 	combo = 0
 	$Combo.text = ""
+	
+	
+func game_over():
+	$Conductor.stop()
+
+	Global.piano_tiles_lost = true
+	print("Game Over")
+	await get_tree().create_timer(2.0).timeout
+	game_finished.emit()
+
+	
 	

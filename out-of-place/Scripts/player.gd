@@ -4,15 +4,21 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 @onready var blob_guy_all_forms_col: Node3D = $"BlobGuy_All_Forms-col"
-
+@export var movement_enabled := true
 
 var targetPosition: Vector3
 
-func _ready() -> void:
-	add_to_group("player")
+#func _ready() -> void:
+	#add_to_group("player")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+	#print(movement_enabled)
+	if !movement_enabled:
+		velocity = Vector3.ZERO
+		move_and_slide()
+		return
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		

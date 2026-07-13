@@ -18,6 +18,8 @@ func _input(_event):
 #below does the camera invisble
 	#if event is InputEventMouseMotion:
 		#rotation.y -= event.relative.x * cameraSens
+	if !controls_enabled:
+		return
 	_camera_zoom()
 ##use mouse wheel to zoom in or out
 func _camera_zoom():
@@ -31,8 +33,9 @@ func _camera_zoom():
 	camera_3d.size = clamp(camera_3d.size, minZoom, maxZoom)
 
 func _physics_process(_delta: float) -> void:
-	if controls_enabled:
-		_camera_movement()
+	if !controls_enabled:
+		return
+	_camera_movement()
 
 ##WASD to move camera
 func _camera_movement():

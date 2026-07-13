@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://dn5w3hakg0g1l" path="res://Scenes/Characters/Player.tscn" id="2_ka15s"]
 [ext_resource type="PackedScene" uid="uid://7hbv7kkdspbr" path="res://Scenes/isometric_camera.tscn" id="3_oofqc"]
 [ext_resource type="PackedScene" uid="uid://c1bjm2mxrsw7x" path="res://Scenes/anxiety_meter.tscn" id="4_1ur3l"]
-[ext_resource type="PackedScene" uid="uid://b0rhwre2mgiu4" path="res://Scenes/MiniGameOne/mini_game_one.tscn" id="5_h7au8"]
-[ext_resource type="Script" uid="uid://c1gja7t61js1m" path="res://Scripts/piano_tiles.gd" id="5_r7b7g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r7b7g"]
+size = Vector3(5, 5, 5)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m8omb"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -23,43 +24,48 @@ glow_enabled = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8omb"]
 albedo_color = Color(0.474298, 0.34968165, 0, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_h7au8"]
-viewport_path = NodePath("PianoTiles/SubViewport")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7b7g"]
+albedo_color = Color(0.79562485, 0.2583299, 1, 1)
 
-[node name="MainWorldScene" type="Node3D" unique_id=1890206900 node_paths=PackedStringArray("excluded")]
+[node name="Game" type="Node3D" unique_id=1619033613]
 script = ExtResource("1_h8oru")
-excluded = [NodePath("Player")]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1811105492]
+[node name="MainWorldScene" type="Node3D" parent="." unique_id=1890206900]
+
+[node name="TriggerMiniGames" type="Area3D" parent="MainWorldScene" unique_id=298103864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2940264, -12.845118)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainWorldScene/TriggerMiniGames" unique_id=17506559]
+shape = SubResource("BoxShape3D_r7b7g")
+debug_color = Color(0.96970683, 0, 0.46272862, 0.41960785)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MainWorldScene" unique_id=1811105492]
 environment = SubResource("Environment_ka15s")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2118238550]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="MainWorldScene" unique_id=2118238550]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1694258855]
+[node name="CSGBox3D" type="CSGBox3D" parent="MainWorldScene" unique_id=1694258855]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.293396, -0.08795166, -4.9687805)
 use_collision = true
 size = Vector3(97.499146, 0.16809082, 93.36322)
 material = SubResource("StandardMaterial3D_m8omb")
 
-[node name="Player" parent="." unique_id=1791364033 instance=ExtResource("2_ka15s")]
+[node name="Player" parent="MainWorldScene" unique_id=1791364033 groups=["player"] instance=ExtResource("2_ka15s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77583885, 0, 0.9238796)
 
-[node name="cameraPivot" parent="." unique_id=776636087 instance=ExtResource("3_oofqc")]
+[node name="cameraPivot" parent="MainWorldScene" unique_id=776636087 instance=ExtResource("3_oofqc")]
 
-[node name="AnxietyMeter3D" parent="cameraPivot" unique_id=194683523 instance=ExtResource("4_1ur3l")]
+[node name="AnxietyMeter3D" parent="MainWorldScene/cameraPivot" unique_id=194683523 instance=ExtResource("4_1ur3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.14212, 15.397285, 0)
 
-[node name="PianoTiles" type="Node3D" parent="." unique_id=1978614242]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.445562, 7.5049124, 0)
-script = ExtResource("5_r7b7g")
+[node name="TriggerMiniGame" type="CSGBox3D" parent="MainWorldScene" unique_id=207167786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2940264, -12.845118)
+visible = false
+size = Vector3(5, 5, 5)
+material = SubResource("StandardMaterial3D_r7b7g")
 
-[node name="Sprite3D" type="Sprite3D" parent="PianoTiles" unique_id=1579454400]
-texture = SubResource("ViewportTexture_h7au8")
+[node name="MiniGameHolder" type="Node" parent="." unique_id=549263200]
 
-[node name="SubViewport" type="SubViewport" parent="PianoTiles" unique_id=624963382]
-size = Vector2i(300, 200)
-render_target_update_mode = 4
-
-[node name="MiniGameOne" parent="PianoTiles/SubViewport" unique_id=1326813907 instance=ExtResource("5_h7au8")]
+[connection signal="body_entered" from="MainWorldScene/TriggerMiniGames" to="." method="_on_trigger_mini_games_body_entered"]

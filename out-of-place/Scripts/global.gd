@@ -9,6 +9,7 @@ var okay = 0
 var missed = 0
 var grade = "NA"
 
+var piano_tiles_lost : bool = false
 
 func set_score(new):
 	score = new
