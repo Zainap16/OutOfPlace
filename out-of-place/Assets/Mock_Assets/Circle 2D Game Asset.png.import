@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csrp2lxarxw26"
-path="res://.godot/imported/red.png-a603707615bc7aa9bf729994c18f65b9.ctex"
+uid="uid://bbtmphrvsubvv"
+path="res://.godot/imported/Circle 2D Game Asset.png-ed784b5cf241c51fb1935452f59b5a8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/red.png"
-dest_files=["res://.godot/imported/red.png-a603707615bc7aa9bf729994c18f65b9.ctex"]
+source_file="res://Assets/Mock_Assets/Circle 2D Game Asset.png"
+dest_files=["res://.godot/imported/Circle 2D Game Asset.png-ed784b5cf241c51fb1935452f59b5a8c.ctex"]
 
 [params]
 

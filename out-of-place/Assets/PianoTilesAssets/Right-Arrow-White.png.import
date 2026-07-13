@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bur1xhsxx6wxs"
-path="res://.godot/imported/blue.png-0fb6959e49f7975842f8556fafcc4001.ctex"
+uid="uid://n6tj5bi246no"
+path="res://.godot/imported/Right-Arrow-White.png-18213e1ee38972fb42ca105670b3863d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/blue.png"
-dest_files=["res://.godot/imported/blue.png-0fb6959e49f7975842f8556fafcc4001.ctex"]
+source_file="res://Assets/PianoTilesAssets/Right-Arrow-White.png"
+dest_files=["res://.godot/imported/Right-Arrow-White.png-18213e1ee38972fb42ca105670b3863d.ctex"]
 
 [params]
 

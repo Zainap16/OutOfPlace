@@ -4,12 +4,16 @@
 [ext_resource type="Script" uid="uid://rp4wjwmiwmyx" path="res://Scripts/pattern_manager.gd" id="1_cjqvf"]
 [ext_resource type="Script" uid="uid://bp3w2osp58vvp" path="res://Scenes/MiniGameThree/red.gd" id="2_k8d01"]
 [ext_resource type="Script" uid="uid://mmjm13q0krxf" path="res://Scenes/MiniGameThree/green.gd" id="3_sv63t"]
-[ext_resource type="Texture2D" uid="uid://csrp2lxarxw26" path="res://Assets/red.png" id="3_y5phe"]
+[ext_resource type="Texture2D" uid="uid://cwvipcld3pl35" path="res://Assets/MemoryGameAssets/RedButton.png" id="3_y5phe"]
 [ext_resource type="Script" uid="uid://bmy6wdhplia6" path="res://Scenes/MiniGameThree/blue.gd" id="4_fpr0d"]
-[ext_resource type="Texture2D" uid="uid://dj54mxwtb0f8o" path="res://Assets/green.png" id="5_hodau"]
+[ext_resource type="Texture2D" uid="uid://caoa156hrhw3g" path="res://Assets/MemoryGameAssets/RedButtonPressed.png" id="4_gbs50"]
 [ext_resource type="Script" uid="uid://drpfrx206tmfq" path="res://Scenes/MiniGameThree/yellow.gd" id="5_l1smm"]
-[ext_resource type="Texture2D" uid="uid://bur1xhsxx6wxs" path="res://Assets/blue.png" id="7_5tu6r"]
-[ext_resource type="Texture2D" uid="uid://n6m00lp0lxld" path="res://Assets/yellow.png" id="9_ea561"]
+[ext_resource type="Texture2D" uid="uid://vqf3haja7tjv" path="res://Assets/MemoryGameAssets/GreenButton.png" id="5_y5phe"]
+[ext_resource type="Texture2D" uid="uid://coao2u2g08xrk" path="res://Assets/MemoryGameAssets/Black_and_White_Retro_Y2K_Streetwear_Clothing_Logo_2.png" id="7_hodau"]
+[ext_resource type="Texture2D" uid="uid://c012vymfdbkha" path="res://Assets/MemoryGameAssets/GreenButtonPressed.png" id="7_sluwa"]
+[ext_resource type="Texture2D" uid="uid://ciriwklx3te2j" path="res://Assets/MemoryGameAssets/YellowButton.png" id="9_hodau"]
+[ext_resource type="Texture2D" uid="uid://c04n4x35mcr0c" path="res://Assets/MemoryGameAssets/BlueButtonPressed.png" id="10_pthqd"]
+[ext_resource type="Texture2D" uid="uid://wm40k8myseox" path="res://Assets/MemoryGameAssets/YellowButtonPressed.png" id="13_rdu30"]
 
 [node name="MemoryGame" type="Control" unique_id=1526977400]
 layout_mode = 3
@@ -24,6 +28,7 @@ script = ExtResource("1_0ii5u")
 script = ExtResource("1_cjqvf")
 
 [node name="Buttons" type="GridContainer" parent="." unique_id=853130137]
+custom_minimum_size = Vector2(540, 540)
 layout_mode = 0
 offset_left = 38.0
 offset_top = 126.0
@@ -33,24 +38,44 @@ columns = 2
 
 [node name="Red" type="TextureButton" parent="Buttons" unique_id=1742163917]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture_normal = ExtResource("3_y5phe")
+texture_pressed = ExtResource("4_gbs50")
+ignore_texture_size = true
+stretch_mode = 5
 script = ExtResource("2_k8d01")
 
 [node name="Green" type="TextureButton" parent="Buttons" unique_id=38526411]
 layout_mode = 2
-texture_normal = ExtResource("5_hodau")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("5_y5phe")
+texture_pressed = ExtResource("7_sluwa")
+ignore_texture_size = true
+stretch_mode = 5
 script = ExtResource("3_sv63t")
 colour_id = 1
 
 [node name="Blue" type="TextureButton" parent="Buttons" unique_id=788588144]
 layout_mode = 2
-texture_normal = ExtResource("7_5tu6r")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("7_hodau")
+texture_pressed = ExtResource("10_pthqd")
+ignore_texture_size = true
+stretch_mode = 5
 script = ExtResource("4_fpr0d")
 colour_id = 2
 
 [node name="Yellow" type="TextureButton" parent="Buttons" unique_id=1722691656]
 layout_mode = 2
-texture_normal = ExtResource("9_ea561")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("9_hodau")
+texture_pressed = ExtResource("13_rdu30")
+ignore_texture_size = true
+stretch_mode = 5
 script = ExtResource("5_l1smm")
 colour_id = 3
 
