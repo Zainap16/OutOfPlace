@@ -1,6 +1,10 @@
 extends Node2D
 
 
+##Dialogue vars
+var get_insulted_by_bob := false
+
+
 var score = 0
 var combo = 0
 var great = 0

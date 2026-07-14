@@ -17,6 +17,8 @@ var has_player_entered_memory_game := false
 var current_minigame: Node = null
 var playing_minigame := false
 
+#func _ready() -> void:
+	#Dialogic.start("Zen_and_Player_intro_convo")
 
 func _input(event: InputEvent) -> void:
 	if playing_minigame:

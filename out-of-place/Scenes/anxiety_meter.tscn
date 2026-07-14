@@ -23,6 +23,67 @@ shadow_offset = Vector2(0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vewv"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="Animation" id="Animation_vaffi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/AnxietyMeter:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport/AnxietyMeter/DamageBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+
+[sub_resource type="Animation" id="Animation_e8jmg"]
+resource_name = "rapid_anxiety"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/AnxietyMeter:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [100.0, 50.0, 10.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport/AnxietyMeter/DamageBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.46666667, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [100.0, 60.0, 14.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vaffi"]
+_data = {
+&"RESET": SubResource("Animation_vaffi"),
+&"rapid_anxiety": SubResource("Animation_e8jmg")
+}
+
 [node name="AnxietyMeter3D" type="Node3D" unique_id=194683523]
 script = ExtResource("1_e8jmg")
 
@@ -38,7 +99,7 @@ offset_right = 500.0
 offset_bottom = 80.0
 theme_override_styles/background = SubResource("StyleBoxEmpty_e8jmg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vaffi")
-value = 50.0
+value = 100.0
 show_percentage = false
 script = ExtResource("1_f4cd8")
 
@@ -52,11 +113,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_jhbi8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6vewv")
-value = 80.0
+value = 100.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="SubViewport/AnxietyMeter" unique_id=818378783]
 wait_time = 0.4
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1304912094]
+libraries/ = SubResource("AnimationLibrary_vaffi")
+autoplay = &"rapid_anxiety"
 
 [connection signal="timeout" from="SubViewport/AnxietyMeter/Timer" to="SubViewport/AnxietyMeter" method="_on_timer_timeout"]
