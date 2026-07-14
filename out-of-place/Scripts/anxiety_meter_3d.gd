@@ -1,6 +1,5 @@
 extends Node3D
 
-@onready var viewport: SubViewport = $SubViewport
 @onready var sprite: Sprite3D = $Sprite3D
 #@onready var anxiety_meter: ProgressBar = $SubViewport/AnxietyMeter
 @onready var anxiety_meter: ProgressBar = $AnxietyMeter
