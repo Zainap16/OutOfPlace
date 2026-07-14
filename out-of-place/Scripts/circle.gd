@@ -1,5 +1,5 @@
-extends Area2D
-
+extends Node2D
+signal game_finished
 @export var player_cursor : Node2D
 
 @export var start_speed := 200.0
@@ -14,11 +14,15 @@ extends Area2D
 var speed := 0.0
 var direction := Vector2.ZERO
 var score := 0.0
+#@onready var countdown_label: Label = $GameStartLabel
+@onready var timer: Timer = $Timer
+@onready var countdown_label: Label = $GameStartLabel
 
-@onready var countdown_label: Label = $"../GameStartLabel"
-@onready var timer: Timer = $"../Timer"
+#@onready var countdown_label: Label = $"../GameStartLabel"
+#@onready var timer: Timer = $"../Timer"
+@onready var collision: CollisionShape2D = $Circle/CollisionShape2D
 
-@onready var collision: CollisionShape2D = $CollisionShape2D
+#@onready var collision: CollisionShape2D = $CollisionShape2D
 var game_started = false
 var countdown = 3
 
@@ -100,6 +104,7 @@ func game_over():
 	print("Score: ", snapped(score,0.01))
 
 	get_tree().paused = true
+	game_finished.emit()
 
 
 func _on_timer_timeout() -> void:

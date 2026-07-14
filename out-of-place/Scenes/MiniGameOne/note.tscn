@@ -27,6 +27,7 @@ animations = [{
 size = Vector2(10, 8)
 
 [node name="Note" type="Area2D" unique_id=157682907 groups=["note"]]
+scale = Vector2(3.5, 3.5)
 script = ExtResource("1_737yn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2059513274]

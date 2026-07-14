@@ -1,14 +1,17 @@
 extends Area2D
 
-const TARGET_Y = 164
-const SPAWN_Y = -16
+const TARGET_Y = 500
+#3.5
+##Move notes higher --> const SPAWN_Y = -100
+##Move notes lower --> const SPAWN_Y = 20
+const SPAWN_Y = -100
 const DIST_TO_TARGET = TARGET_Y - SPAWN_Y
 
 #spawn vectors x
-
-const LEFT_LANE_SPAWN = Vector2(120, SPAWN_Y)
-const CENTRE_LANE_SPAWN = Vector2(160, SPAWN_Y)
-const RIGHT_LANE_SPAWN = Vector2(200, SPAWN_Y)
+##Move the lanes sideways
+const LEFT_LANE_SPAWN = Vector2(160, SPAWN_Y)
+const CENTRE_LANE_SPAWN = Vector2(310, SPAWN_Y)
+const RIGHT_LANE_SPAWN = Vector2(460, SPAWN_Y)
 
 var speed = 0
 var hit = false
@@ -21,7 +24,7 @@ func _ready():
 func _physics_process(delta):
 	if !hit:
 		position.y += speed * delta
-		if position.y > 200:
+		if position.y > TARGET_Y + 80:
 			queue_free()
 			get_parent().reset_combo()
 	else:

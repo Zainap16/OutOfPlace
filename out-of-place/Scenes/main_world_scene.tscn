@@ -8,6 +8,12 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_r7b7g"]
 size = Vector3(5, 5, 5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ur3l"]
+size = Vector3(11.546875, 1, 8.48938)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h7au8"]
+size = Vector3(11.915161, 1, 5.8046875)
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m8omb"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -39,6 +45,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2940264, -12.845118)
 shape = SubResource("BoxShape3D_r7b7g")
 debug_color = Color(0.96970683, 0, 0.46272862, 0.41960785)
 
+[node name="CircleArea" type="Area3D" parent="MainWorldScene" unique_id=520589401]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainWorldScene/CircleArea" unique_id=1905143945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.203478, 0, 1.74469)
+shape = SubResource("BoxShape3D_1ur3l")
+debug_color = Color(0.038741983, 0.6020281, 0.6862271, 0.41960785)
+
+[node name="MemoryGameArea" type="Area3D" parent="MainWorldScene" unique_id=846243020]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainWorldScene/MemoryGameArea" unique_id=1975353919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.522726, 0, 1.2041016)
+shape = SubResource("BoxShape3D_h7au8")
+debug_color = Color(0, 0.63660955, 0.40668887, 0.41960785)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="MainWorldScene" unique_id=1811105492]
 environment = SubResource("Environment_ka15s")
 
@@ -56,16 +76,21 @@ material = SubResource("StandardMaterial3D_m8omb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77583885, 0, 0.9238796)
 
 [node name="cameraPivot" parent="MainWorldScene" unique_id=776636087 instance=ExtResource("3_oofqc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.6094856)
+cameraSpeed = 0.3
+maxZoom = 20
+orbit_sensitivity = 0.001
 
 [node name="AnxietyMeter3D" parent="MainWorldScene/cameraPivot" unique_id=194683523 instance=ExtResource("4_1ur3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.14212, 15.397285, 0)
 
 [node name="TriggerMiniGame" type="CSGBox3D" parent="MainWorldScene" unique_id=207167786]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2940264, -12.845118)
-visible = false
 size = Vector3(5, 5, 5)
 material = SubResource("StandardMaterial3D_r7b7g")
 
 [node name="MiniGameHolder" type="Node" parent="." unique_id=549263200]
 
 [connection signal="body_entered" from="MainWorldScene/TriggerMiniGames" to="." method="_on_trigger_mini_games_body_entered"]
+[connection signal="body_entered" from="MainWorldScene/CircleArea" to="." method="_on_circle_area_body_entered"]
+[connection signal="body_entered" from="MainWorldScene/MemoryGameArea" to="." method="_on_memory_game_area_body_entered"]

@@ -32,8 +32,8 @@ custom_minimum_size = Vector2(540, 540)
 layout_mode = 0
 offset_left = 38.0
 offset_top = 126.0
-offset_right = 386.0
-offset_bottom = 465.0
+offset_right = 578.0
+offset_bottom = 666.0
 columns = 2
 
 [node name="Red" type="TextureButton" parent="Buttons" unique_id=1742163917]
@@ -98,6 +98,7 @@ offset_bottom = 59.0
 text = "Status:"
 
 [node name="RestartButton" type="Button" parent="." unique_id=1634546038]
+visible = false
 layout_mode = 0
 offset_left = 184.0
 offset_top = 50.0

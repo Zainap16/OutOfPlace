@@ -7,8 +7,13 @@ extends Node3D
 @export var excluded: Array[Node3D] = []
 
 var mini_game_one_piano_tiles = preload("res://Scenes/MiniGameOne/mini_game_one.tscn")
+var mini_game_circle = preload("res://Scenes/MiniGameTwo/stay_in_the_circle.tscn")
+var mini_game_memory_game = preload("res://Scenes/MiniGameThree/memory_game.tscn")
 
 var has_player_entered_piano_tiles := false
+var has_player_entered_circle := false
+var has_player_entered_memory_game := false
+
 var current_minigame: Node = null
 var playing_minigame := false
 
@@ -81,3 +86,57 @@ func close_current_minigame():
 	camera_pivot.controls_enabled = true
 
 	playing_minigame = false
+
+func start_circle_game():
+
+	has_player_entered_circle = true
+	playing_minigame = true
+
+	current_minigame = mini_game_circle.instantiate()
+	mini_game_holder.add_child(current_minigame)
+
+	current_minigame.game_finished.connect(close_current_minigame)
+
+	var player = get_tree().get_first_node_in_group("player")
+	player.movement_enabled = false
+	player.targetPosition = Vector3.ZERO
+
+	camera_pivot.controls_enabled = false
+
+func start_memory_game():
+
+	has_player_entered_memory_game = true
+	playing_minigame = true
+
+	current_minigame = mini_game_memory_game.instantiate()
+	mini_game_holder.add_child(current_minigame)
+
+	#current_minigame.game_finished.connect(close_current_minigame)
+	current_minigame.get_node("PatternManager").game_finished.connect(close_current_minigame)
+
+	var player = get_tree().get_first_node_in_group("player")
+	player.movement_enabled = false
+	player.targetPosition = Vector3.ZERO
+
+	camera_pivot.controls_enabled = false
+
+
+
+func _on_circle_area_body_entered(body: Node3D) -> void:
+	if body.name != "Player":
+		return
+
+	if has_player_entered_circle:
+		return
+
+	call_deferred("start_circle_game")
+
+
+func _on_memory_game_area_body_entered(body: Node3D) -> void:
+	if body.name != "Player":
+		return
+
+	if has_player_entered_memory_game:
+		return
+
+	call_deferred("start_memory_game")

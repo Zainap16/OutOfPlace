@@ -43,7 +43,7 @@ func _report_beat():
 		last_reported_beat = song_position_in_beats
 		measure_ += 1
 
-
+##Music starts after x num of seconds?
 func play_with_beat_offset(num):
 	beats_before_start = num
 	$StartTimer.wait_time = sec_per_beat
@@ -81,4 +81,4 @@ func start_game():
 		return
 
 	game_started = true
-	play_with_beat_offset(4) # or whatever countdown you want
+	play_with_beat_offset(4) # or whatever countdown i want

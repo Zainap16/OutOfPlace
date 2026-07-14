@@ -1,5 +1,7 @@
 extends Node
+class_name PatternManager
 
+signal game_finished
 var original_modulates := {}
 
 enum Colors {
@@ -38,10 +40,6 @@ func _ready():
 	start_round()
 
 
-#######################################################
-## ROUND
-#######################################################
-
 func start_round():
 
 	waiting_for_player = false
@@ -60,10 +58,6 @@ func start_round():
 	waiting_for_player = true
 
 
-#######################################################
-## SHOW PATTERN
-#######################################################
-
 func show_pattern():
 
 	for colour in pattern:
@@ -73,9 +67,6 @@ func show_pattern():
 		await get_tree().create_timer(0.15).timeout
 
 
-#######################################################
-## FLASH BUTTON
-#######################################################
 func flash(colour):
 
 	var button : TextureButton
@@ -101,10 +92,6 @@ func flash(colour):
 	tween = create_tween()
 	tween.tween_property(button, "scale", Vector2.ONE, 0.08)
 
-
-#######################################################
-## PLAYER INPUT
-#######################################################
 
 func player_clicked(colour):
 
@@ -133,9 +120,6 @@ func player_clicked(colour):
 
 		start_round()
 
-#######################################################
-## GAME OVER
-#######################################################
 
 func game_over():
 
@@ -146,22 +130,4 @@ func game_over():
 	score_label.text = "Score: %d" % score
 
 	print("Game Over")
-#######################################################
-## BUTTON SIGNALS
-#######################################################
-
-
-#func _on_red_pressed() -> void:
-	#player_clicked(Colors.RED)
-#
-#
-#func _on_green_pressed() -> void:
-	#player_clicked(Colors.GREEN)
-#
-#
-#func _on_blue_pressed() -> void:
-	#player_clicked(Colors.BLUE)
-#
-#
-#func _on_yellow_pressed() -> void:
-	#player_clicked(Colors.YELLOW)
+	game_finished.emit()

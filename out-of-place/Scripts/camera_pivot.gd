@@ -9,19 +9,35 @@ extends Node3D
 @onready var camera_3d: Camera3D = $Camera3D
 ##pause wasd camera control when false
 @export var controls_enabled := true
+@export var orbit_sensitivity := 0.005
 
+var orbiting := false
+
+@export var min_pitch := deg_to_rad(-70)
+@export var max_pitch := deg_to_rad(-20)
+
+var pitch := 0.0
 func _ready() -> void:
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	pass
 
-func _input(_event):
-#below does the camera invisble
-	#if event is InputEventMouseMotion:
-		#rotation.y -= event.relative.x * cameraSens
+func _input(event):
+
 	if !controls_enabled:
 		return
+
 	_camera_zoom()
-##use mouse wheel to zoom in or out
+
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_MIDDLE:
+			orbiting = event.pressed
+
+	if orbiting and event is InputEventMouseMotion:
+		rotation.y -= event.relative.x * orbit_sensitivity
+
+		pitch -= event.relative.y * orbit_sensitivity
+		pitch = clamp(pitch, min_pitch, max_pitch)
+
+		camera_3d.rotation.x = pitch
 func _camera_zoom():
 	var zoomChange = 0
 	if Input.is_action_pressed("mouse_wheel_up"):
