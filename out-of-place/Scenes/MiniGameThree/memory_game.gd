@@ -14,6 +14,7 @@ func _ready():
 	game_manager.game_finished.connect(_on_game_finished)
 
 func _on_game_finished():
+	await get_tree().create_timer(4.0).timeout
 	game_finished.emit()
 
 func _on_restart_pressed():

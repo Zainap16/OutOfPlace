@@ -32,9 +32,59 @@ script = ExtResource("2_lvcok")
 autostart = true
 
 [node name="GameStartLabel" type="Label" parent="." unique_id=1373740291]
-offset_left = 42.0
-offset_top = 29.0
-offset_right = 82.0
-offset_bottom = 52.0
+offset_left = 750.0
+offset_top = 415.0
+offset_right = 1230.0
+offset_bottom = 498.0
+theme_override_font_sizes/font_size = 60
+text = "Game Begins in: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YouFailedLabel" type="RichTextLabel" parent="." unique_id=2136078794]
+visible = false
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_top = -20.0
+offset_right = 1579.0
+offset_bottom = 1095.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[color=red][wave] YOU FAILED[/wave][/color]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YouFailedLabel2" type="RichTextLabel" parent="." unique_id=1288669160]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 329.0
+offset_top = -126.0
+offset_right = 1576.0
+offset_bottom = 243.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[color=yellow]Stay Inside The Circle[/color]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1785610792]
+offset_left = 1437.0
+offset_top = 36.0
+offset_right = 1477.0
+offset_bottom = 132.0
+theme_override_font_sizes/font_size = 70
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

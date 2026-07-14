@@ -2,10 +2,11 @@ extends Node3D
 
 @onready var viewport: SubViewport = $SubViewport
 @onready var sprite: Sprite3D = $Sprite3D
-@onready var anxiety_meter: ProgressBar = $SubViewport/AnxietyMeter
+#@onready var anxiety_meter: ProgressBar = $SubViewport/AnxietyMeter
+@onready var anxiety_meter: ProgressBar = $AnxietyMeter
 
 func _ready():
-	sprite.texture = viewport.get_texture()
+	#sprite.texture = viewport.get_texture()
 	anxiety_meter.init_anxiety_meter(100)
 #
 func _input(event):

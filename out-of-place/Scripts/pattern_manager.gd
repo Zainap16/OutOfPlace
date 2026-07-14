@@ -102,10 +102,15 @@ func player_clicked(colour):
 
 	var current = player_pattern.size()-1
 
-	if player_pattern[current] != pattern[current]:
-
+	#if player_pattern[current] != pattern[current]:
+		#game_over()
+		#return
+	if current >= pattern.size():
 		game_over()
+		return
 
+	if player_pattern[current] != pattern[current]:
+		game_over()
 		return
 
 	if player_pattern.size() == pattern.size():

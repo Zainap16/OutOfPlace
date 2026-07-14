@@ -2,14 +2,27 @@
 
 [node name="BeginLoser" type="CanvasLayer" unique_id=877441789]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=147072801]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1598950830]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=781326837]
-offset_right = 1955.0
-offset_bottom = 1084.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 80
 bbcode_enabled = true
-text = "Let the essential tests commence"
+text = "[color=red][wave] Let the essential tests commence[/wave][/color]"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=147072801]

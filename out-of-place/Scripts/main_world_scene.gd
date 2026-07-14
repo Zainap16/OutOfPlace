@@ -1,6 +1,7 @@
 extends Node3D
 
-@onready var mini_game_holder: Node = $MiniGameHolder
+@onready var mini_game_holder: CanvasLayer = $MiniGameHolder
+@onready var black_screen_canvas_layer: CanvasLayer = $BlackScreenCanvasLayer
 
 @onready var camera_pivot: Node3D = $MainWorldScene/cameraPivot
 
@@ -16,9 +17,17 @@ var has_player_entered_memory_game := false
 
 var current_minigame: Node = null
 var playing_minigame := false
+var current_game_index := 0
 
-#func _ready() -> void:
-	#Dialogic.start("Zen_and_Player_intro_convo")
+func _ready() -> void:
+	#var player = get_tree().get_first_node_in_group("player")
+	pass
+#	values below needs to be turned on so the mini games can commence
+	#player.movement_enabled = false
+
+	#camera_pivot.controls_enabled = false
+
+	#call_deferred("start_piano_tiles")
 
 func _input(event: InputEvent) -> void:
 	if playing_minigame:
@@ -71,15 +80,7 @@ func start_piano_tiles():
 	player.targetPosition = Vector3.ZERO
 
 	camera_pivot.controls_enabled = false
-
-
-func close_current_minigame():
-
-	get_tree().paused = false
-
-	if current_minigame:
-		current_minigame.queue_free()
-		current_minigame = null
+func finish_intro():
 
 	var player = get_tree().get_first_node_in_group("player")
 	player.movement_enabled = true
@@ -88,6 +89,27 @@ func close_current_minigame():
 	camera_pivot.controls_enabled = true
 
 	playing_minigame = false
+	await get_tree().create_timer(4.0).timeout
+	black_screen_canvas_layer.hide()
+
+func close_current_minigame():
+
+	get_tree().paused = false
+
+	if current_minigame:
+		current_minigame.queue_free()
+		current_minigame = null
+# Wait 4 seconds before the next game
+	
+	current_game_index += 1
+
+	match current_game_index:
+		1:
+			start_circle_game()
+		2:
+			start_memory_game()
+		_:
+			finish_intro()
 
 func start_circle_game():
 
@@ -124,21 +146,21 @@ func start_memory_game():
 
 
 
-func _on_circle_area_body_entered(body: Node3D) -> void:
-	if body.name != "Player":
-		return
-
-	if has_player_entered_circle:
-		return
-
-	call_deferred("start_circle_game")
-
-
-func _on_memory_game_area_body_entered(body: Node3D) -> void:
-	if body.name != "Player":
-		return
-
-	if has_player_entered_memory_game:
-		return
-
-	call_deferred("start_memory_game")
+#func _on_circle_area_body_entered(body: Node3D) -> void:
+	#if body.name != "Player":
+		#return
+#
+	#if has_player_entered_circle:
+		#return
+#
+	#call_deferred("start_circle_game")
+#
+#
+#func _on_memory_game_area_body_entered(body: Node3D) -> void:
+	#if body.name != "Player":
+		#return
+#
+	#if has_player_entered_memory_game:
+		#return
+#
+	#call_deferred("start_memory_game")

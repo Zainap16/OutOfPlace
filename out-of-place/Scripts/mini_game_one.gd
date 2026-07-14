@@ -31,10 +31,13 @@ var instance
 @export var max_misses = 5
 @onready var lose_label: Label = $LoseLabel
 var player_lost_piano_tiles : bool = false
+@onready var you_failed_label: RichTextLabel = $YouFailedLabel
 
 func _ready():
 	randomize()
 	$Conductor.play_with_beat_offset(4)
+	you_failed_label.visible = false
+
 
 
 func _input(event):
@@ -149,8 +152,9 @@ func increment_score(by):
 		okay += 1
 	else:
 		missed += 1
+		lose_label.text = "Missed/Extra CLicks: "+ str(missed)
 		if missed >= max_misses:
-			lose_label.text = "Missed/Extra CLicks: "+ str(missed)
+			
 			player_lost_piano_tiles = true
 			game_over()
 	
@@ -175,8 +179,10 @@ func game_over():
 
 	Global.piano_tiles_lost = true
 	print("Game Over")
-	await get_tree().create_timer(2.0).timeout
+	you_failed_label.visible = true
+	await get_tree().create_timer(4.0).timeout
 	game_finished.emit()
+	
 
 	
 	

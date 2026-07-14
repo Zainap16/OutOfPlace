@@ -23,10 +23,11 @@ var score := 0.0
 #@onready var countdown_label: Label = $"../GameStartLabel"
 #@onready var timer: Timer = $"../Timer"
 @onready var collision: CollisionShape2D = $Circle/CollisionShape2D
+@onready var score_label: Label = $ScoreLabel
 
 #@onready var collision: CollisionShape2D = $CollisionShape2D
 var game_started = false
-var countdown = 3
+var countdown = 4
 
 func _ready():
 
@@ -45,6 +46,7 @@ func _process(delta):
 	if !game_started:
 		return
 	score += delta
+	score_label.text = "Score: " + str(round(score))
 
 	move_circle(delta)
 
@@ -104,8 +106,9 @@ func game_over():
 
 	print("GAME OVER")
 	print("Score: ", snapped(score,0.01))
-
+	
 	get_tree().paused = true
+	await get_tree().create_timer(4.0).timeout
 	game_finished.emit()
 
 
@@ -114,7 +117,7 @@ func _on_timer_timeout() -> void:
 	countdown -= 1
 
 	if countdown > 0:
-		countdown_label.text = str(countdown)
+		countdown_label.text = "Game Starts in: "+ str(countdown)
 
 	elif countdown == 0:
 		countdown_label.text = "GO!"

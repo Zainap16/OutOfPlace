@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://he88b8kqrx62" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_White_Left.png" id="7_0y1wl"]
 [ext_resource type="PackedScene" uid="uid://divs3kucqcfph" path="res://Scenes/MiniGameOne/conductor.tscn" id="8_c7tmp"]
 [ext_resource type="AudioStream" uid="uid://bbqhuiypbmulr" path="res://Music/Grieg In the Hall of the Mountain King.mp3" id="9_swv4p"]
-[ext_resource type="Texture2D" uid="uid://oij2p8n0r41b" path="res://icon.svg" id="10_0y1wl"]
 [ext_resource type="PackedScene" uid="uid://dno0dodlysjdo" path="res://Scenes/global.tscn" id="11_8kvnj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3plo5"]
@@ -43,13 +42,34 @@ animations = [{
 [node name="MiniGameOne" type="Node2D" unique_id=1326813907]
 script = ExtResource("1_3plo5")
 
+[node name="YouFailedLabel" type="RichTextLabel" parent="." unique_id=1210436828]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_top = -20.0
+offset_right = 1579.0
+offset_bottom = 1095.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[color=red][wave] YOU FAILED[/wave][/color]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="LoseLabel" type="Label" parent="." unique_id=895700625]
-offset_left = 253.0
-offset_top = 16.0
-offset_right = 293.0
-offset_bottom = 39.0
+offset_left = 751.0
+offset_top = 82.0
+offset_right = 797.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 60
 text = "0"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="road" type="Sprite2D" parent="." unique_id=1361575304]
 position = Vector2(101, 5)
@@ -75,27 +95,23 @@ sprite_frames = SubResource("SpriteFrames_c7tmp")
 input = "camera_left"
 
 [node name="Label" type="Label" parent="." unique_id=5930615]
-offset_left = 21.0
-offset_top = 15.0
-offset_right = 61.0
-offset_bottom = 38.0
+offset_left = 755.0
+offset_top = 201.0
+offset_right = 795.0
+offset_bottom = 224.0
+theme_override_font_sizes/font_size = 60
 text = "0"
 
 [node name="Combo" type="Label" parent="." unique_id=55805222]
-offset_left = 23.0
-offset_top = 70.0
-offset_right = 63.0
-offset_bottom = 93.0
+offset_left = 756.0
+offset_top = 322.0
+offset_right = 796.0
+offset_bottom = 405.0
+theme_override_font_sizes/font_size = 60
 
 [node name="Conductor" parent="." unique_id=2081456583 instance=ExtResource("8_c7tmp")]
 stream = ExtResource("9_swv4p")
 bpm = 150
-
-[node name="Sprite2D" type="Sprite2D" parent="Conductor" unique_id=213067072]
-position = Vector2(1, 467)
-scale = Vector2(0.140625, 0.140625)
-texture = ExtResource("10_0y1wl")
-offset = Vector2(120, -16)
 
 [node name="Global" parent="." unique_id=466138978 instance=ExtResource("11_8kvnj")]
 

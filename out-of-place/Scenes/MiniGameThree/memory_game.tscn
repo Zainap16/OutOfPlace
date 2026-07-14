@@ -30,10 +30,10 @@ script = ExtResource("1_cjqvf")
 [node name="Buttons" type="GridContainer" parent="." unique_id=853130137]
 custom_minimum_size = Vector2(540, 540)
 layout_mode = 0
-offset_left = 38.0
-offset_top = 126.0
-offset_right = 578.0
-offset_bottom = 666.0
+offset_left = 653.0
+offset_top = 293.0
+offset_right = 1193.0
+offset_bottom = 833.0
 columns = 2
 
 [node name="Red" type="TextureButton" parent="Buttons" unique_id=1742163917]
@@ -86,15 +86,19 @@ colour_id = 3
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1658017593]
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1508379908]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 1445.0
+offset_top = 27.0
+offset_right = 1665.0
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 75
 text = "Score:"
 
 [node name="StatusLabel" type="Label" parent="CanvasLayer" unique_id=95578462]
-offset_left = -1.0
-offset_top = 36.0
-offset_right = 53.0
-offset_bottom = 59.0
+offset_left = 789.0
+offset_top = 177.0
+offset_right = 1038.0
+offset_bottom = 280.0
+theme_override_font_sizes/font_size = 75
 text = "Status:"
 
 [node name="RestartButton" type="Button" parent="." unique_id=1634546038]
