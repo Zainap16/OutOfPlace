@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cxv7onvd20k4l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r7b7g"]
+size = Vector3(5, 5, 5)
+
+[node name="TriggerMiniGames" type="Area3D" unique_id=364688529]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=255849732]
+shape = SubResource("BoxShape3D_r7b7g")
+debug_color = Color(0.96970683, 0, 0.46272862, 0.41960785)

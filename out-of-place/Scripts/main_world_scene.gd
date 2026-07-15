@@ -7,7 +7,7 @@ extends Node3D
 
 @export var excluded: Array[Node3D] = []
 
-var mini_game_one_piano_tiles = preload("res://Scenes/MiniGameOne/mini_game_one.tscn")
+var mini_game_one_piano_tiles = preload("res://Scenes/MiniGameOne/paper_falling_game.tscn")
 var mini_game_circle = preload("res://Scenes/MiniGameTwo/stay_in_the_circle.tscn")
 var mini_game_memory_game = preload("res://Scenes/MiniGameThree/memory_game.tscn")
 
@@ -19,15 +19,15 @@ var current_minigame: Node = null
 var playing_minigame := false
 var current_game_index := 0
 
+##start mini games when game loads -> auto turne off
+@export var start_mini_games_when_game_loads:bool=false
+
 func _ready() -> void:
-	#var player = get_tree().get_first_node_in_group("player")
-	pass
-#	values below needs to be turned on so the mini games can commence
-	#player.movement_enabled = false
-
-	#camera_pivot.controls_enabled = false
-
-	#call_deferred("start_piano_tiles")
+	if start_mini_games_when_game_loads:
+		start_mini_games()
+	else:
+		black_screen_canvas_layer.visible = false
+		return
 
 func _input(event: InputEvent) -> void:
 	if playing_minigame:
@@ -144,7 +144,13 @@ func start_memory_game():
 
 	camera_pivot.controls_enabled = false
 
+func start_mini_games():
+	var player = get_tree().get_first_node_in_group("player")
+	player.movement_enabled = false
 
+	camera_pivot.controls_enabled = false
+
+	call_deferred("start_piano_tiles")
 
 #func _on_circle_area_body_entered(body: Node3D) -> void:
 	#if body.name != "Player":

@@ -11,9 +11,13 @@ var targetPosition: Vector3
 
 var current_npc: Node = null
 
+
+
+var carrying_box := false
+@onready var holding: MeshInstance3D = $"BlobGuy_All_Forms-col/Form5"
+@onready var normal: MeshInstance3D = $"BlobGuy_All_Forms-col/Form1"
+
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	#print(movement_enabled)
 	if Input.is_action_just_pressed("interact") and current_npc:
 		targetPosition = Vector3.ZERO
 		velocity.x = 0
@@ -56,6 +60,13 @@ func set_current_npc(npc):
 func clear_current_npc(npc):
 	if current_npc == npc:
 		current_npc = null
+		
+func set_box_visual(has_box: bool):
+	carrying_box = has_box
+
+	normal.visible = !has_box
+	holding.visible = has_box
+
 #func _set_animation():
 	#if velocity.x:
 		#animation_player.play("Running_A")

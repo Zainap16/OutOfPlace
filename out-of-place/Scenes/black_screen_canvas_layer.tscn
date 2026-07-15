@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://6fvimh6xyvsb"]
+
+[ext_resource type="Script" uid="uid://2iwei2dtm1u8" path="res://Scripts/mini_puzzles.gd" id="1_3skxv"]
+
+[node name="BlackScreenCanvasLayer" type="CanvasLayer" unique_id=1037047245]
+layer = 0
+script = ExtResource("1_3skxv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1153580077]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

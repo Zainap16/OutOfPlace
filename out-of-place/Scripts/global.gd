@@ -2,8 +2,10 @@ extends Node2D
 
 
 ##Dialogue vars
-var get_insulted_by_bob := false
+@export var get_insulted_by_bob := false
+@export var bob_apologized_to_player:= false
 
+@export var stacked_all_boxes:= false
 
 var score = 0
 var combo = 0
