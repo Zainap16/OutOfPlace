@@ -1,19 +1,21 @@
-[gd_scene format=3 uid="uid://dpo016tctvmbv"]
+[gd_scene format=3 uid="uid://bsxlgv1bh43c0"]
 
-[ext_resource type="Script" uid="uid://b0pfo84s007c7" path="res://Scripts/zen.gd" id="1_nhptn"]
-[ext_resource type="Resource" uid="uid://tbklygwh7cfs" path="res://Dialogue_/Timelines/Zen_and_Player_intro_convo.dtl" id="2_jwysd"]
-[ext_resource type="Resource" uid="uid://cq6fqu7m7ui2v" path="res://Dialogue_/Timelines/Zen_advises_Bob_to_Player.dtl" id="3_g0k4e"]
+[ext_resource type="Script" uid="uid://cp20icvowhtly" path="res://Scripts/sadie.gd" id="1_ttefy"]
+[ext_resource type="Resource" uid="uid://cpbjvrogrl0xm" path="res://Dialogue_/Timelines/Player_offers_to_help_Sadie.dtl" id="2_jff0a"]
+[ext_resource type="Resource" uid="uid://brf680fvxbf22" path="res://Dialogue_/Timelines/Sadies_gets_tissues_thanks_Player.dtl" id="3_kwr06"]
+[ext_resource type="Resource" uid="uid://dj0hgv6mcv2fk" path="res://Dialogue_/Timelines/Sadies_advises_Player_of_Nate.dtl" id="4_dqhcl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhptn"]
-albedo_color = Color(0.8060578, 0, 0.29266804, 1)
+albedo_color = Color(0.19201842, 0.49041086, 0.4823612, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nhptn"]
 radius = 2.1401346
 
-[node name="Zen" type="Node3D" unique_id=1929353291]
-script = ExtResource("1_nhptn")
-intro_zeb_timeline = ExtResource("2_jwysd")
-zen_advises_about_bob = ExtResource("3_g0k4e")
+[node name="Sadie" type="Node3D" unique_id=1929353291]
+script = ExtResource("1_ttefy")
+intro_to_sadie = ExtResource("2_jff0a")
+player_hands_tiisue_to_sadie = ExtResource("3_kwr06")
+sadie_advises_player_of_nate = ExtResource("4_dqhcl")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1925160512]
 material = SubResource("StandardMaterial3D_nhptn")

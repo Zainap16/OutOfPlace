@@ -7,6 +7,11 @@ extends Node2D
 
 @export var stacked_all_boxes:= false
 @export var has_blanket := false
+
+@export var first_convo_with_sadie:= false
+##tissue piano tiles game needs to be true to collect tissues
+@export var has_tissue:= false
+
 var score = 0
 var combo = 0
 var great = 0

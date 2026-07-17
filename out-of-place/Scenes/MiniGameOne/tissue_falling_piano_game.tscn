@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://dkkpfxihtjlnr"]
+
+[ext_resource type="Script" uid="uid://du4i477qwnvkm" path="res://Scenes/MiniGameOne/tissue_falling_piano_game.gd" id="1_1xiuu"]
+[ext_resource type="Texture2D" uid="uid://c7lyjnchjuc35" path="res://Assets/Mock_Assets/road/road.png" id="2_wbwsg"]
+[ext_resource type="PackedScene" uid="uid://xdqukx77lw12" path="res://Scenes/MiniGameOne/arrow_up.tscn" id="3_diihj"]
+[ext_resource type="Texture2D" uid="uid://do7tscq6j2r2m" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_Grey_Right.png" id="4_uc641"]
+[ext_resource type="Texture2D" uid="uid://k7wfftw64cf2" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_White_Right.png" id="5_5rhpb"]
+[ext_resource type="Texture2D" uid="uid://ce38w3xawvryi" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_Grey_Left_.png" id="6_lvu4i"]
+[ext_resource type="Texture2D" uid="uid://he88b8kqrx62" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_White_Left.png" id="7_iblnu"]
+[ext_resource type="PackedScene" uid="uid://divs3kucqcfph" path="res://Scenes/MiniGameOne/conductor.tscn" id="8_drbvf"]
+[ext_resource type="AudioStream" uid="uid://bbqhuiypbmulr" path="res://Music/Grieg In the Hall of the Mountain King.mp3" id="9_lnonw"]
+[ext_resource type="PackedScene" uid="uid://dno0dodlysjdo" path="res://Scenes/global.tscn" id="10_unjgb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3plo5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_uc641")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5rhpb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c7tmp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_lvu4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_iblnu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TissueFallingPianoGame" type="Node2D" unique_id=1326813907]
+script = ExtResource("1_1xiuu")
+
+[node name="YouFailedLabel" type="RichTextLabel" parent="." unique_id=1210436828]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_top = -20.0
+offset_right = 1579.0
+offset_bottom = 1095.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[color=red][wave] YOU FAILED[/wave][/color]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoseLabel" type="Label" parent="." unique_id=895700625]
+offset_left = 751.0
+offset_top = 82.0
+offset_right = 797.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="road" type="Sprite2D" parent="." unique_id=1361575304]
+position = Vector2(101, 5)
+scale = Vector2(3.5, 3.472)
+texture = ExtResource("2_wbwsg")
+centered = false
+
+[node name="ArrowUp" parent="." unique_id=43299780 instance=ExtResource("3_diihj")]
+position = Vector2(306, 568)
+scale = Vector2(0.146, 0.146)
+input = "camera_up"
+
+[node name="ArrowRight" parent="." unique_id=525090198 instance=ExtResource("3_diihj")]
+position = Vector2(453.99997, 576)
+scale = Vector2(0.146, 0.146)
+sprite_frames = SubResource("SpriteFrames_3plo5")
+input = "camera_right"
+
+[node name="ArrowLeft" parent="." unique_id=1607403687 instance=ExtResource("3_diihj")]
+position = Vector2(172, 575)
+scale = Vector2(0.146, 0.146)
+sprite_frames = SubResource("SpriteFrames_c7tmp")
+input = "camera_left"
+
+[node name="Label" type="Label" parent="." unique_id=5930615]
+offset_left = 755.0
+offset_top = 201.0
+offset_right = 795.0
+offset_bottom = 224.0
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="Combo" type="Label" parent="." unique_id=55805222]
+offset_left = 756.0
+offset_top = 322.0
+offset_right = 796.0
+offset_bottom = 405.0
+theme_override_font_sizes/font_size = 60
+
+[node name="Conductor" parent="." unique_id=2081456583 instance=ExtResource("8_drbvf")]
+stream = ExtResource("9_lnonw")
+bpm = 150
+
+[node name="Global" parent="." unique_id=466138978 instance=ExtResource("10_unjgb")]
+
+[connection signal="beat" from="Conductor" to="." method="_on_Conductor_beat"]
+[connection signal="measure" from="Conductor" to="." method="_on_Conductor_measure"]

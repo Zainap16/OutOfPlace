@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://c0q3dwkwnupqm"]
+
+[ext_resource type="Script" uid="uid://ddjifw0j0pn8q" path="res://Scripts/note.gd" id="1_4a12w"]
+[ext_resource type="Texture2D" uid="uid://i8earyafrq3y" path="res://Assets/Tissue_Images/Tissue1.png" id="2_4a12w"]
+[ext_resource type="Texture2D" uid="uid://dphovappd051u" path="res://Assets/Tissue_Images/Tissue3.png" id="3_jd080"]
+[ext_resource type="Texture2D" uid="uid://dc1wtemufo10q" path="res://Assets/Tissue_Images/Tissue7.png" id="4_35aw0"]
+[ext_resource type="Texture2D" uid="uid://cevc66xycq4xk" path="res://Assets/Mock_Assets/particles/star.png" id="5_bu471"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cwqtl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4a12w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jd080")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_35aw0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_130y8"]
+size = Vector2(10, 8)
+
+[node name="Note" type="Area2D" unique_id=157682907 groups=["note"]]
+scale = Vector2(3.5, 3.5)
+script = ExtResource("1_4a12w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2059513274]
+scale = Vector2(0.018518511, 0.018518519)
+sprite_frames = SubResource("SpriteFrames_cwqtl")
+frame_progress = 0.020301176
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=541716187]
+shape = SubResource("RectangleShape2D_130y8")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1654046070]
+emitting = false
+amount = 16
+texture = ExtResource("5_bu471")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.8
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=2044524848]
+wait_time = 0.3
+one_shot = true
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1639306741]
+
+[node name="Label" type="Label" parent="Node2D" unique_id=770792295]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

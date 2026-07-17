@@ -11,7 +11,9 @@
 [ext_resource type="Script" uid="uid://brvis67i1ybmv" path="res://Scripts/bob.gd" id="7_c0xwx"]
 [ext_resource type="Resource" uid="uid://pj2ut68lg5vb" path="res://Dialogue_/Timelines/Bob_and_Player_intro_convo.dtl" id="8_8fe31"]
 [ext_resource type="Resource" uid="uid://da1n0550o3p2g" path="res://Dialogue_/Timelines/Bob_apologizes_to_Player.dtl" id="9_ojfyc"]
+[ext_resource type="Resource" uid="uid://ds15hfem43h0n" path="res://Dialogue_/Timelines/Bob_advises_Player_of_Sadie.dtl" id="11_2o51t"]
 [ext_resource type="PackedScene" uid="uid://6fvimh6xyvsb" path="res://Scenes/black_screen_canvas_layer.tscn" id="12_2o51t"]
+[ext_resource type="PackedScene" uid="uid://bsxlgv1bh43c0" path="res://Scenes/Characters/Sadie.tscn" id="12_xiqbi"]
 [ext_resource type="PackedScene" uid="uid://bjqdm46jnrbwy" path="res://Scenes/boxes_stair_case.tscn" id="13_o07pp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m8omb"]
@@ -31,7 +33,7 @@ glow_enabled = true
 script = ExtResource("1_h8oru")
 
 [node name="Player" parent="." unique_id=1791364033 groups=["player"] instance=ExtResource("2_ka15s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.95664, 8.146785, -34.592052)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.97371, 8.146785, -36.899727)
 
 [node name="MiniGameHolder" type="CanvasLayer" parent="." unique_id=1559064045]
 
@@ -69,6 +71,10 @@ visible = false
 script = ExtResource("7_c0xwx")
 intro_bob_timeline = ExtResource("8_8fe31")
 bob_apologizes_to_player = ExtResource("9_ojfyc")
+bob_advises_playr_of_sadie = ExtResource("11_2o51t")
+
+[node name="Sadie" parent="Characters" unique_id=108850910 instance=ExtResource("12_xiqbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.812637, 8.782362, -39.99732)
 
 [node name="BlackScreenCanvasLayer" parent="." unique_id=1037047245 instance=ExtResource("12_2o51t")]
 
