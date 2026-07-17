@@ -61,7 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.293396, -0.08795166, -4.96
 [node name="Characters" type="Node3D" parent="." unique_id=1539426937]
 
 [node name="Zen" parent="Characters" unique_id=1929353291 instance=ExtResource("5_h7au8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.33453, 0.6760864, 10.827379)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.22647, 0.6760864, 11.899261)
 
 [node name="Bob" parent="Characters" unique_id=832949138 instance=ExtResource("5_h7au8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.136772, 8.423716, -44.35999)
