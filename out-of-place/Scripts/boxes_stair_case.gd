@@ -3,9 +3,8 @@ extends Node3D
 
 
 #forms
-@onready var normal : MeshInstance3D = $"../MainWorldScene/Player/BlobGuy_All_Forms-col/Form1"
-@onready var holding: MeshInstance3D = $"../MainWorldScene/Player/BlobGuy_All_Forms-col/Form2"
-
+@onready var normal : MeshInstance3D = $"../Player/BlobGuy_All_Forms-col/Form1"
+@onready var holding: MeshInstance3D = $"../Player/PlayerHoldingBoxes/Form2HoldingBoxEmpty"
 #boxes
 @onready var box_empty: MeshInstance3D = $BoxEmpty
 @onready var box_empty_001: MeshInstance3D = $BoxEmpty_001

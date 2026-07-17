@@ -29,9 +29,11 @@ func interact():
 	var player = get_tree().get_first_node_in_group("player")
 	player.movement_enabled = false
 
-	if dialogue_stage == 0:
+	if !Global.get_insulted_by_bob:
+		dialogue_stage = 0
 		Dialogic.start(intro_bob_timeline)
-	if Global.bob_apologized_to_player:
+		Global.get_insulted_by_bob = true
+	if Global.bob_apologized_to_player && Global.has_blanket:
 		dialogue_stage = 1
 		Dialogic.start(bob_apologizes_to_player)
 		print("bob_apologizes_to_player: "+ str(bob_apologizes_to_player))

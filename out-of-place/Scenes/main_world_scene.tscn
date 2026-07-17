@@ -31,7 +31,7 @@ glow_enabled = true
 script = ExtResource("1_h8oru")
 
 [node name="Player" parent="." unique_id=1791364033 groups=["player"] instance=ExtResource("2_ka15s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.95664, 0, 50.20408)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.95664, 8.146785, -34.592052)
 
 [node name="MiniGameHolder" type="CanvasLayer" parent="." unique_id=1559064045]
 
@@ -76,7 +76,7 @@ bob_apologizes_to_player = ExtResource("9_ojfyc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.69322, -0.67528045, 25.279133)
 
 [node name="cameraPivot" parent="." unique_id=776636087 instance=ExtResource("3_oofqc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.755127, 77.88388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.755127, -20.120659)
 
 [connection signal="body_entered" from="MainWorldScene/WinMiniGames/TriggerMiniGames" to="MainWorldScene/WinMiniGames" method="_on_circle_area_body_entered"]
 

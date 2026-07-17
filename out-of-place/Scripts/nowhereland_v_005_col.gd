@@ -42,6 +42,7 @@ func _process(_delta):
 			if boxes_dropped >= 3:
 				drop_area.monitoring = false
 	if player_in_area_blanket and Input.is_action_just_pressed("interact"):
+		Global.has_blanket = true
 		bobs_blanket.visible = false
 		print("collected bobs blanket")
 		blanket_trigger.monitoring = false

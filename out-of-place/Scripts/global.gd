@@ -6,7 +6,7 @@ extends Node2D
 @export var bob_apologized_to_player:= false
 
 @export var stacked_all_boxes:= false
-
+@export var has_blanket := false
 var score = 0
 var combo = 0
 var great = 0

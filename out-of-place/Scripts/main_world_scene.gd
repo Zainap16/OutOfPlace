@@ -3,7 +3,7 @@ extends Node3D
 @onready var mini_game_holder: CanvasLayer = $MiniGameHolder
 @onready var black_screen_canvas_layer: CanvasLayer = $BlackScreenCanvasLayer
 
-@onready var camera_pivot: Node3D = $MainWorldScene/cameraPivot
+@onready var camera_pivot: Node3D = $cameraPivot
 
 @export var excluded: Array[Node3D] = []
 
