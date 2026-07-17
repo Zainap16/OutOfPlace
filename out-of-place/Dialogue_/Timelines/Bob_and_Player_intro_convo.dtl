@@ -7,3 +7,8 @@ Player_ch: “I just wanted t-to...”
 Bob: “Do you think I'm not busy?”
 
 Bob: “I don't need help, and I don't want to talk!”
+What should I do?
+Stay calm.
+Apologize and give him space.
+Shout back.
+[signal arg="anxiety_fail"]

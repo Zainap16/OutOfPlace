@@ -6,7 +6,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e8jmg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vaffi"]
-bg_color = Color(0.2822173, 0.5423483, 0.43626603, 1)
+bg_color = Color(0.746416, 0.108233385, 0.22466522, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhbi8"]
 bg_color = Color(0.07284262, 0.072842635, 0.072842576, 1)
@@ -52,7 +52,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_e8jmg"]
 resource_name = "rapid_anxiety"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -126,6 +125,5 @@ texture = SubResource("ViewportTexture_vaffi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1304912094]
 libraries/ = SubResource("AnimationLibrary_vaffi")
-autoplay = &"rapid_anxiety"
 
 [connection signal="timeout" from="AnxietyMeter/Timer" to="AnxietyMeter" method="_on_timer_timeout"]

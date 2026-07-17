@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://b1dt8gg7yhve8"]
+
+[ext_resource type="Script" uid="uid://b7q3xd82pfj17" path="res://Scripts/boss_none_essential_scene.gd" id="1_jafwd"]
+[ext_resource type="PackedScene" uid="uid://ddel8cp3w4a40" path="res://Assets/OfficeRoom_V001-col.glb" id="1_xcglm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jafwd"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_m4mvt"]
+sky_material = SubResource("ProceduralSkyMaterial_jafwd")
+
+[sub_resource type="Environment" id="Environment_g7ql0"]
+background_mode = 2
+sky = SubResource("Sky_m4mvt")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Animation" id="Animation_jafwd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraManager/BothCam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.4792244, 0.7800076, 0.05075121)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraManager/BothCam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.0138443, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraManager/BothCam/CanvasLayer/ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m4mvt"]
+resource_name = "cam"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraManager/BothCam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.4792244, 0.7800076, 0.05075121), Vector3(-2.7972126, 0.9784498, -1.2788854), Vector3(-0.67225254, 1.1923879, -0.4538222)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraManager/BothCam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.0138443, 0), Vector3(0, -1.9905654, 0), Vector3(0, -2.884907, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraManager/BothCam/CanvasLayer/ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g7ql0"]
+_data = {
+&"RESET": SubResource("Animation_jafwd"),
+&"cam": SubResource("Animation_m4mvt")
+}
+
+[node name="BossNoneEssentialScene" type="Node3D" unique_id=1657673530]
+script = ExtResource("1_jafwd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=918380849]
+environment = SubResource("Environment_g7ql0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=164979240]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="OfficeRoom_V001-col" parent="." unique_id=510859555 instance=ExtResource("1_xcglm")]
+
+[node name="CameraManager" type="Node3D" parent="." unique_id=1055723854]
+
+[node name="PlayerCam" type="Camera3D" parent="CameraManager" unique_id=1789079505]
+transform = Transform3D(-0.8627786, 0, -0.50558203, 0, 1, 0, 0.50558203, 0, -0.8627786, -1.0680629, 1.3081003, -0.6548743)
+
+[node name="BossCam" type="Camera3D" parent="CameraManager" unique_id=1733907343]
+transform = Transform3D(0.7170566, 0, -0.6970149, 0, 1, 0, 0.6970149, 0, 0.7170566, -0.9781699, 1.8525989, -5.5261955)
+
+[node name="BothCam" type="Camera3D" parent="CameraManager" unique_id=1277199262]
+transform = Transform3D(0.52860135, 0, -0.8488702, 0, 1, 0, 0.8488702, 0, 0.52860135, -3.4792244, 0.7800076, 0.05075121)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CameraManager/BothCam" unique_id=409675888]
+
+[node name="ColorRect" type="ColorRect" parent="CameraManager/BothCam/CanvasLayer" unique_id=1545578078]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="BossLabelDialogue" type="Label3D" parent="." unique_id=880199893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5038792, 2.2166016, -6.0319953)
+billboard = 2
+text = "Citizen 4589-C for the accusation of 
+being non-essential i find you guilty"
+font_size = 15
+autowrap_mode = 3
+
+[node name="PlayerDialogue" type="Label3D" parent="." unique_id=845039435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0832715, 1.5086336, 0.26838857)
+billboard = 2
+text = "I am essential..."
+font_size = 15
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1759271581]
+libraries/ = SubResource("AnimationLibrary_g7ql0")
