@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dkkpfxihtjlnr" path="res://Scenes/MiniGameOne/tissue_falling_piano_game.tscn" id="7_8ugxi"]
 [ext_resource type="Script" uid="uid://brvis67i1ybmv" path="res://Scripts/bob.gd" id="7_c0xwx"]
 [ext_resource type="Resource" uid="uid://pj2ut68lg5vb" path="res://Dialogue_/Timelines/Bob_and_Player_intro_convo.dtl" id="8_8fe31"]
+[ext_resource type="PackedScene" uid="uid://d4rcr2lejehd" path="res://Scenes/MiniGameThree/memory_game_nate.tscn" id="8_p3d35"]
 [ext_resource type="Resource" uid="uid://da1n0550o3p2g" path="res://Dialogue_/Timelines/Bob_apologizes_to_Player.dtl" id="9_ojfyc"]
 [ext_resource type="Resource" uid="uid://ds15hfem43h0n" path="res://Dialogue_/Timelines/Bob_advises_Player_of_Sadie.dtl" id="11_2o51t"]
 [ext_resource type="PackedScene" uid="uid://6fvimh6xyvsb" path="res://Scenes/black_screen_canvas_layer.tscn" id="12_2o51t"]
@@ -35,7 +36,7 @@ glow_enabled = true
 script = ExtResource("1_h8oru")
 
 [node name="Player" parent="." unique_id=1791364033 groups=["player"] instance=ExtResource("2_ka15s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.377956, 0.38395786, 25.910599)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.976387, 12.885524, 49.537678)
 
 [node name="MiniGameHolder" type="CanvasLayer" parent="." unique_id=1559064045]
 
@@ -63,6 +64,7 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.293396, -0.08795166, -4.9687805)
 tissue_game_scene = ExtResource("7_8ugxi")
 mini_game_holder = NodePath("../../MiniGameHolder")
+memory_game_scene = ExtResource("8_p3d35")
 
 [node name="Characters" type="Node3D" parent="." unique_id=1539426937]
 
@@ -89,6 +91,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.69322, -0.67528045, 25.27
 
 [node name="cameraPivot" parent="." unique_id=776636087 instance=ExtResource("3_oofqc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.755127, -20.120659)
+
+[node name="Camera3D" parent="cameraPivot" index="0" unique_id=1995177369]
+transform = Transform3D(0.4072149, -0.45666617, 0.790969, 0, 0.8660254, 0.5, -0.91333234, -0.20360745, 0.35265845, 35.634857, 10.8808975, 76.442986)
 
 [connection signal="body_entered" from="MainWorldScene/WinMiniGames/TriggerMiniGames" to="MainWorldScene/WinMiniGames" method="_on_circle_area_body_entered"]
 

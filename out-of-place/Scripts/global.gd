@@ -21,6 +21,8 @@ extends Node2D
 #nate
 @export var nate_first_convo := false
 @export var player_has_lamp:= false
+@export var memory_game_unlocked := true
+@export var memory_game_completed := false
 var score = 0
 var combo = 0
 var great = 0

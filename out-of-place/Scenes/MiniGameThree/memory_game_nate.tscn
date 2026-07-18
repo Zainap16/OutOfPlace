@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d4rcr2lejehd"]
 
-[ext_resource type="Script" uid="uid://cjdja0or3eqie" path="res://Scenes/MiniGameThree/memory_game.gd" id="1_0tqmi"]
+[ext_resource type="Script" uid="uid://mmwdapqn021" path="res://Scenes/MiniGameThree/memory_game_nate.gd" id="1_0tqmi"]
 [ext_resource type="Script" uid="uid://dq7kdlc1o0p7a" path="res://Scenes/MiniGameThree/pattern_manager_nate.gd" id="2_0tqmi"]
 [ext_resource type="Texture2D" uid="uid://cwvipcld3pl35" path="res://Assets/MemoryGameAssets/RedButton.png" id="3_kuck4"]
 [ext_resource type="Texture2D" uid="uid://caoa156hrhw3g" path="res://Assets/MemoryGameAssets/RedButtonPressed.png" id="4_8l17i"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://wm40k8myseox" path="res://Assets/MemoryGameAssets/YellowButtonPressed.png" id="13_snba3"]
 [ext_resource type="Script" uid="uid://drpfrx206tmfq" path="res://Scenes/MiniGameThree/yellow.gd" id="14_ijiug"]
 
-[node name="MemoryGame" type="Control" unique_id=1526977400]
+[node name="MemoryGameNate" type="Control" unique_id=1526977400]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

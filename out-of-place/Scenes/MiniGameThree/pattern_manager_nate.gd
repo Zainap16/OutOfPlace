@@ -154,5 +154,5 @@ func win_game():
 	print("You Win!")
 
 	await get_tree().create_timer(2.0).timeout
-
+	Global.player_has_lamp = true
 	game_finished.emit()

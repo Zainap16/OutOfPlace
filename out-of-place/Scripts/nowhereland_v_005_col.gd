@@ -19,6 +19,14 @@ var boxes_dropped := 0
 var started := false
 
 var current_game: Node
+var player_in_lamp_area:= false
+
+@export var memory_game_scene: PackedScene
+
+var current_memory_game: Node
+var memory_game_started := false
+
+@onready var nate_memory_game: Area3D = $NateMemoryGame
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	box_empty.visible = false
@@ -53,6 +61,10 @@ func _process(_delta):
 		bobs_blanket.visible = false
 		print("collected bobs blanket")
 		blanket_trigger.monitoring = false
+	if player_in_lamp_area and Input.is_action_just_pressed("interact"):
+		nates_night_light.visible = false
+		Global.player_has_lamp = true
+		print("Player collected Nate's Night Light")
 		
 	else:
 		return
@@ -113,5 +125,62 @@ func _on_game_finished():
 
 	var player = get_tree().get_first_node_in_group("player")
 	player.movement_enabled = true
+	player.targetPosition = Vector3.ZERO
+
+	camera_pivot.controls_enabled = true
 
 	tissue_game_area.monitoring = false
+
+
+func _on_nate_memory_game_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		print("Player entered memory game")
+	if !body.is_in_group("player"):
+		return
+
+	if memory_game_started:
+		return
+
+	if !Global.memory_game_unlocked:
+		return
+
+	memory_game_started = true
+
+	body.movement_enabled = false
+	body.targetPosition = Vector3.ZERO
+	camera_pivot.controls_enabled = false
+
+	current_memory_game = memory_game_scene.instantiate()
+	mini_game_holder.add_child(current_memory_game)
+
+	current_memory_game.game_finished.connect(_on_memory_game_finished)
+@onready var cave_rock_door: MeshInstance3D = $NateMemoryGame/CaveRockDoor
+
+func _on_memory_game_finished():
+
+	Global.memory_game_unlocked = false
+	Global.memory_game_completed = true
+
+	if current_memory_game:
+		current_memory_game.queue_free()
+		cave_rock_door.queue_free()
+		current_memory_game = null
+
+	var player = get_tree().get_first_node_in_group("player")
+	player.movement_enabled = true
+	player.targetPosition = Vector3.ZERO
+
+	camera_pivot.controls_enabled = true
+
+	nate_memory_game.monitoring = false
+
+@onready var nates_night_light: MeshInstance3D = $NateMemoryGame/NatesNightLight
+
+func _on_nates_night_light_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		player_in_lamp_area = true
+
+
+func _on_nate_memory_game_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		player_in_lamp_area = false
