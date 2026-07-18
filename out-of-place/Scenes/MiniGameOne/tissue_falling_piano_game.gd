@@ -28,6 +28,9 @@ var rand = 0
 var note = load("res://Scenes/MiniGameOne/tissue_notes.tscn")
 var instance
 
+@export var fake_song_finished := false
+var game_finished_once := false
+@onready var you_won_label: RichTextLabel = $YouWonLabel
 @export var max_misses = 5
 @onready var lose_label: Label = $LoseLabel
 var player_lost_piano_tiles : bool = false
@@ -37,7 +40,11 @@ func _ready():
 	randomize()
 	$Conductor.play_with_beat_offset(4)
 	you_failed_label.visible = false
+	you_won_label.visible = false
 
+func _process(_delta: float) -> void:
+	if fake_song_finished and !game_finished_once:
+		win_game()
 
 
 func _input(event):
@@ -112,13 +119,15 @@ func _on_Conductor_beat(position):
 		spawn_2_beat = 0
 		spawn_3_beat = 0
 		spawn_4_beat = 0
-	if song_position_in_beats > 404:
-		Global.set_score(score)
-		Global.combo = max_combo
-		Global.great = great
-		Global.good = good
-		Global.okay = okay
-		Global.missed = missed
+	if song_position_in_beats > 404 and !game_finished_once:
+		win_game()
+	#if song_position_in_beats > 404:
+		#Global.set_score(score)
+		#Global.combo = max_combo
+		#Global.great = great
+		#Global.good = good
+		#Global.okay = okay
+		#Global.missed = missed
 
 
 
@@ -184,5 +193,26 @@ func game_over():
 	game_finished.emit()
 	
 
-	
+
+func win_game():
+
+	if game_finished_once:
+		return
+
+	game_finished_once = true
+
+	$Conductor.stop()
+
+	Global.set_score(score)
+	Global.combo = max_combo
+	Global.great = great
+	Global.good = good
+	Global.okay = okay
+	Global.missed = missed
+
+	you_won_label.visible = true
+
+	await get_tree().create_timer(4.0).timeout
+
+	game_finished.emit()
 	
