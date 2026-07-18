@@ -309,7 +309,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nd4x5")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gjot8"]
-size = Vector3(1.6772461, 1.847168, 1.5533752)
+size = Vector3(1.6772461, 1.2244873, 1.5533752)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6oba"]
 resource_name = "mat15"
@@ -610,31 +610,31 @@ script = ExtResource("1_gjot8")
 transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0.07070548, -0.08795738, 0.044941425)
 
 [node name="Form5" type="MeshInstance3D" parent="BlobGuy_All_Forms-col" unique_id=136473902]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.9699063, 0.5040195)
+transform = Transform3D(0.445, 0, 0, 0, 0.445, 0, 0, 0, 0.445, 0, 4.6616144, -0.13959308)
 visible = false
 mesh = SubResource("ArrayMesh_f337q")
 
 [node name="Form4" type="MeshInstance3D" parent="BlobGuy_All_Forms-col" unique_id=408616860]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.6405134, 0)
+transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0, 7.6405134, 0)
 visible = false
 mesh = SubResource("ArrayMesh_c32ed")
 
 [node name="Form3" type="MeshInstance3D" parent="BlobGuy_All_Forms-col" unique_id=427596597]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.861248, -0.032009166)
+transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0, 5.861248, -0.032009166)
 visible = false
 mesh = SubResource("ArrayMesh_kgwpf")
 
 [node name="Form2" type="MeshInstance3D" parent="BlobGuy_All_Forms-col" unique_id=794157003]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.3153543, -0.0028737602)
+transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0, 5.3153543, -0.0028737602)
 visible = false
 mesh = SubResource("ArrayMesh_4ik75")
 
 [node name="Form1" type="MeshInstance3D" parent="BlobGuy_All_Forms-col" unique_id=656652884]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.34992, -0.0026656652)
+transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0, 5.34992, -0.0026656652)
 mesh = SubResource("ArrayMesh_7idui")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1596815659]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.044338107, 0.6967225, 0.012568772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.044338107, 0.69190073, 0.012568772)
 shape = SubResource("BoxShape3D_gjot8")
 
 [node name="PlayerHoldingBoxes" type="Node3D" parent="." unique_id=1277874189]

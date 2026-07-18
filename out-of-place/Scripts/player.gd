@@ -11,8 +11,6 @@ var targetPosition: Vector3
 
 var current_npc: Node = null
 
-
-
 var carrying_box := false
 @onready var holding: MeshInstance3D = $PlayerHoldingBoxes/Form2HoldingBoxEmpty
 @onready var normal: MeshInstance3D = $"BlobGuy_All_Forms-col/Form1"
@@ -54,6 +52,7 @@ func _physics_process(delta: float) -> void:
 	#_set_animation()
 	#
 	move_and_slide()
+	
 func set_current_npc(npc):
 	current_npc = npc
 

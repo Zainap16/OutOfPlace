@@ -8,6 +8,8 @@ extends Node3D
 
 var boss_dialogue = ["For these hanouse actions i sentence you..", " be exiled and being stripped of your title as a citizen", "There is no place for you here", "You are worth nothing here so with the garbage you belong"]
 
+@export var main_world_scene: PackedScene
+
 func _ready():
 	start_cutscene()
 
@@ -24,14 +26,18 @@ func start_cutscene() -> void:
 	# Switch to player camera
 	switch_camera(player_cam)
 
-	# Player already has text in the Label3D, so just leave it for a few seconds
+
 	await get_tree().create_timer(3.0).timeout
 
-	# Switch to both characters (optional)
+
 	switch_camera(both_cam)
 	player_dialogue.text = ""
 	boss_label_dialogue.text = ""
 	animation_player.play("cam")
+	await animation_player.animation_finished
+
+	get_tree().change_scene_to_packed(main_world_scene)
+	
 	#get_tree().quit()
 	
 func switch_camera(cam: Camera3D) -> void:

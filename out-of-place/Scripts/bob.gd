@@ -40,6 +40,8 @@ func interact():
 	elif Global.bob_apologized_to_player && Global.has_blanket:
 		Dialogic.start(bob_apologizes_to_player)
 		Global.bob_apologized_to_player = false
+		$"../../Player/BlobGuy_All_Forms-col/Form2".visible = true
+		$"../../Player/BlobGuy_All_Forms-col/Form1".visible = false
 	elif Global.first_convo_with_sadie:
 		unlock_tissue_game = true
 		Dialogic.start(bob_advises_playr_of_sadie)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b7q3xd82pfj17" path="res://Scripts/boss_none_essential_scene.gd" id="1_jafwd"]
 [ext_resource type="PackedScene" uid="uid://ddel8cp3w4a40" path="res://Assets/OfficeRoom_V001-col.glb" id="1_xcglm"]
+[ext_resource type="PackedScene" uid="uid://u77tg6lwow7g" path="res://Scenes/main_world_scene.tscn" id="2_m4mvt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jafwd"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -103,6 +104,7 @@ _data = {
 
 [node name="BossNoneEssentialScene" type="Node3D" unique_id=1657673530]
 script = ExtResource("1_jafwd")
+main_world_scene = ExtResource("2_m4mvt")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=918380849]
 environment = SubResource("Environment_g7ql0")

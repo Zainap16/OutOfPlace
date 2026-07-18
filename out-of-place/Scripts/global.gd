@@ -33,6 +33,9 @@ var grade = "NA"
 
 var piano_tiles_lost : bool = false
 
+#player forms
+var player_arms_frm2 := false
+
 func set_score(new):
 	score = new
 	if score > 250000:

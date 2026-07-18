@@ -34,6 +34,7 @@ glow_enabled = true
 
 [node name="Game" type="Node3D" unique_id=1619033613]
 script = ExtResource("1_h8oru")
+start_mini_games_when_game_loads = true
 
 [node name="Player" parent="." unique_id=1791364033 groups=["player"] instance=ExtResource("2_ka15s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.976387, 12.885524, 49.537678)
