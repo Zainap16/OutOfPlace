@@ -58,6 +58,7 @@ animations = [{
 [node name="TissueFallingPianoGame" type="Node2D" unique_id=1326813907]
 script = ExtResource("1_1xiuu")
 max_misses = 500
+score_goal_to_win = 100
 
 [node name="YouFailedLabel" type="RichTextLabel" parent="." unique_id=1210436828]
 anchors_preset = 13

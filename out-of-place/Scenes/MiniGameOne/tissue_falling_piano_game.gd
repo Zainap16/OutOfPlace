@@ -35,6 +35,7 @@ var game_finished_once := false
 @onready var lose_label: Label = $LoseLabel
 var player_lost_piano_tiles : bool = false
 @onready var you_failed_label: RichTextLabel = $YouFailedLabel
+@export var score_goal_to_win = 200
 
 func _ready():
 	randomize()
@@ -120,7 +121,10 @@ func _on_Conductor_beat(position):
 		spawn_3_beat = 0
 		spawn_4_beat = 0
 	if song_position_in_beats > 404 and !game_finished_once:
-		win_game()
+		if score >= score_goal_to_win:
+			win_game()
+		else:
+			game_over()
 	#if song_position_in_beats > 404:
 		#Global.set_score(score)
 		#Global.combo = max_combo
@@ -170,6 +174,8 @@ func increment_score(by):
 	
 	score += by * combo
 	$Label.text = str(score)
+	if score >= score_goal_to_win and !game_finished_once:
+		win_game()
 	if combo > 0:
 		$Combo.text = str(combo) + " combo!"
 		if combo > max_combo:
@@ -184,6 +190,8 @@ func reset_combo():
 	
 	
 func game_over():
+	if game_finished_once:
+		return
 	$Conductor.stop()
 
 	Global.piano_tiles_lost = true
@@ -213,6 +221,6 @@ func win_game():
 	you_won_label.visible = true
 
 	await get_tree().create_timer(4.0).timeout
-
+	
 	game_finished.emit()
 	

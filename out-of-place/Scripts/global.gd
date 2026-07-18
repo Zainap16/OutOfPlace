@@ -16,6 +16,10 @@ extends Node2D
 
 @export var nate_first_convo := false
 
+
+# tornado
+@export var tissue_game_unlocked := false
+
 var score = 0
 var combo = 0
 var great = 0

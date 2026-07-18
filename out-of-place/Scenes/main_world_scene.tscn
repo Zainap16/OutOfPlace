@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c1bjm2mxrsw7x" path="res://Scenes/anxiety_meter.tscn" id="4_1ur3l"]
 [ext_resource type="PackedScene" uid="uid://cxv7onvd20k4l" path="res://Scenes/trigger_mini_games.tscn" id="4_o07pp"]
 [ext_resource type="PackedScene" uid="uid://dpo016tctvmbv" path="res://Scenes/Characters/zen.tscn" id="5_h7au8"]
+[ext_resource type="PackedScene" uid="uid://dkkpfxihtjlnr" path="res://Scenes/MiniGameOne/tissue_falling_piano_game.tscn" id="7_8ugxi"]
 [ext_resource type="Script" uid="uid://brvis67i1ybmv" path="res://Scripts/bob.gd" id="7_c0xwx"]
 [ext_resource type="Resource" uid="uid://pj2ut68lg5vb" path="res://Dialogue_/Timelines/Bob_and_Player_intro_convo.dtl" id="8_8fe31"]
 [ext_resource type="Resource" uid="uid://da1n0550o3p2g" path="res://Dialogue_/Timelines/Bob_apologizes_to_Player.dtl" id="9_ojfyc"]
@@ -33,7 +34,7 @@ glow_enabled = true
 script = ExtResource("1_h8oru")
 
 [node name="Player" parent="." unique_id=1791364033 groups=["player"] instance=ExtResource("2_ka15s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.674763, 8.146785, -36.899727)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.189156, 0.38395786, -36.899727)
 
 [node name="MiniGameHolder" type="CanvasLayer" parent="." unique_id=1559064045]
 
@@ -57,8 +58,10 @@ environment = SubResource("Environment_ka15s")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Nowhereland_V005-col" parent="MainWorldScene" unique_id=1571571711 instance=ExtResource("3_8fe31")]
+[node name="Nowhereland_V005-col" parent="MainWorldScene" unique_id=1571571711 node_paths=PackedStringArray("mini_game_holder") instance=ExtResource("3_8fe31")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.293396, -0.08795166, -4.9687805)
+tissue_game_scene = ExtResource("7_8ugxi")
+mini_game_holder = NodePath("../../MiniGameHolder")
 
 [node name="Characters" type="Node3D" parent="." unique_id=1539426937]
 

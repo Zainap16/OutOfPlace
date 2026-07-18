@@ -9,9 +9,16 @@ var player_in_area = false
 var player_in_area_blanket = false
 @onready var drop_area: Area3D = $DropArea
 @onready var blanket_trigger: Area3D = $BlanketTrigger
-
+@onready var camera_pivot: Node3D = $"../../cameraPivot"
 var boxes_dropped := 0
 
+@onready var tissue_game_area: Area3D = $Tornado/TissueGameArea
+
+@export var tissue_game_scene: PackedScene
+@export var mini_game_holder :CanvasLayer
+var started := false
+
+var current_game: Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	box_empty.visible = false
@@ -69,3 +76,42 @@ func _on_blanket_trigger_body_entered(body: Node3D) -> void:
 func _on_blanket_trigger_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		player_in_area_blanket = false
+
+
+func _on_tissue_game_area_body_entered(body: Node3D) -> void:
+
+	if !body.is_in_group("player"):
+		return
+
+	if started:
+		return
+
+	if !Global.tissue_game_unlocked:
+		return
+
+	started = true
+
+	# Disable player controls
+	body.movement_enabled = false
+	body.targetPosition = Vector3.ZERO
+	camera_pivot.controls_enabled = false
+
+	current_game = tissue_game_scene.instantiate()
+	mini_game_holder.add_child(current_game)
+
+	current_game.game_finished.connect(_on_game_finished)
+
+	
+func _on_game_finished():
+
+	Global.has_tissue = true
+	Global.tissue_game_unlocked = false
+
+	if current_game:
+		current_game.queue_free()
+		current_game = null
+
+	var player = get_tree().get_first_node_in_group("player")
+	player.movement_enabled = true
+
+	tissue_game_area.monitoring = false

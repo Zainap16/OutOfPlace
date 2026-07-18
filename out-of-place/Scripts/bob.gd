@@ -1,13 +1,12 @@
 extends Node3D
-signal start_tissue_game
+
 @export var intro_bob_timeline: DialogicTimeline
 @export var bob_apologizes_to_player: DialogicTimeline
 @export var bob_advises_playr_of_sadie: DialogicTimeline
 var player_in_range := false
 @onready var interact_label: Label3D = $InteractLabel
-var dialogue_stage := 0
-
-
+ 
+var unlock_tissue_game := false
 var start_game_after_dialogue := false
 func _ready() -> void:
 	interact_label.visible = false
@@ -26,10 +25,10 @@ func _on_area_3d_body_exited(body):
 func _dialogue_finished():
 	var player = get_tree().get_first_node_in_group("player")
 	player.movement_enabled = true
-	
-	if start_game_after_dialogue:
-		start_game_after_dialogue = false
-		start_tissue_game.emit()
+
+	if unlock_tissue_game:
+		unlock_tissue_game = false
+		Global.tissue_game_unlocked = true
 
 func interact():
 	var player = get_tree().get_first_node_in_group("player")
@@ -42,7 +41,7 @@ func interact():
 		Dialogic.start(bob_apologizes_to_player)
 		Global.bob_apologized_to_player = false
 	elif Global.first_convo_with_sadie:
-		start_game_after_dialogue = true
+		unlock_tissue_game = true
 		Dialogic.start(bob_advises_playr_of_sadie)
 		
 	Dialogic.timeline_ended.connect(_dialogue_finished, CONNECT_ONE_SHOT)
