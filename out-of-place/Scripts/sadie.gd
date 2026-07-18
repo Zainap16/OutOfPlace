@@ -10,6 +10,8 @@ var dialogue_stage := 0
 
 func _ready() -> void:
 	interact_label.visible = false
+	if !Dialogic.timeline_ended.is_connected(_dialogue_finished):
+		Dialogic.timeline_ended.connect(_dialogue_finished)
 
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("player"):
@@ -30,24 +32,15 @@ func interact():
 	var player = get_tree().get_first_node_in_group("player")
 	player.movement_enabled = false
 
-	if dialogue_stage == 0:
+	if !Global.met_sadie:
+		Global.met_sadie = true
 		Dialogic.start(intro_to_sadie)
-	if Global.has_tissue:
-		dialogue_stage = 1
+	elif Global.has_tissue:
 		Dialogic.start(player_hands_tiisue_to_sadie)
-	Dialogic.timeline_ended.connect(_dialogue_finished, CONNECT_ONE_SHOT)
-
-#func _ready() -> void:
-	#var player = get_tree().get_first_node_in_group("player")
-#
-	#if player:
-		#player.movement_enabled = false
-#
-	#Dialogic.start("res://Dialogue_/Timelines/Zen_and_Player_intro_convo.dtl")
-#
-	#Dialogic.timeline_ended.connect(_on_dialogue_finished, CONNECT_ONE_SHOT)
-#
-#
+		Global.has_tissue = false
+	elif Global.nate_first_convo:
+		Dialogic.start(sadie_advises_player_of_nate)
+	#Dialogic.timeline_ended.connect(_dialogue_finished, CONNECT_ONE_SHOT)
 func _on_dialogue_finished():
 	var player = get_tree().get_first_node_in_group("player")
 

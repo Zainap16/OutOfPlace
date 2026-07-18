@@ -11,6 +11,9 @@ var mini_game_one_piano_tiles = preload("res://Scenes/MiniGameOne/paper_falling_
 var mini_game_circle = preload("res://Scenes/MiniGameTwo/stay_in_the_circle.tscn")
 var mini_game_memory_game = preload("res://Scenes/MiniGameThree/memory_game.tscn")
 
+@onready var bob: Node3D = $Characters/Bob
+
+var tissue_game_piano = preload("res://Scenes/MiniGameOne/tissue_falling_piano_game.tscn")
 var has_player_entered_piano_tiles := false
 var has_player_entered_circle := false
 var has_player_entered_memory_game := false
@@ -23,6 +26,7 @@ var current_game_index := 0
 @export var start_mini_games_when_game_loads:bool=false
 
 func _ready() -> void:
+	bob.start_tissue_game.connect(start_tissue_game)
 	if start_mini_games_when_game_loads:
 		start_mini_games()
 	else:
@@ -152,21 +156,33 @@ func start_mini_games():
 
 	call_deferred("start_piano_tiles")
 
-#func _on_circle_area_body_entered(body: Node3D) -> void:
-	#if body.name != "Player":
-		#return
-#
-	#if has_player_entered_circle:
-		#return
-#
-	#call_deferred("start_circle_game")
-#
-#
-#func _on_memory_game_area_body_entered(body: Node3D) -> void:
-	#if body.name != "Player":
-		#return
-#
-	#if has_player_entered_memory_game:
-		#return
-#
-	#call_deferred("start_memory_game")
+func start_tissue_game():
+
+	playing_minigame = true
+
+	current_minigame = tissue_game_piano.instantiate()
+	mini_game_holder.add_child(current_minigame)
+
+	current_minigame.game_finished.connect(close_tissue_game)
+
+	var player = get_tree().get_first_node_in_group("player")
+	player.movement_enabled = false
+	player.targetPosition = Vector3.ZERO
+
+	camera_pivot.controls_enabled = false
+
+func close_tissue_game():
+
+	if current_minigame:
+		current_minigame.queue_free()
+		current_minigame = null
+
+	var player = get_tree().get_first_node_in_group("player")
+	player.movement_enabled = true
+	player.targetPosition = Vector3.ZERO
+
+	camera_pivot.controls_enabled = true
+
+	playing_minigame = false
+
+	Global.has_tissue = true

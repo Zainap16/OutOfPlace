@@ -3,13 +3,29 @@
 [ext_resource type="Script" uid="uid://du4i477qwnvkm" path="res://Scenes/MiniGameOne/tissue_falling_piano_game.gd" id="1_1xiuu"]
 [ext_resource type="Texture2D" uid="uid://c7lyjnchjuc35" path="res://Assets/Mock_Assets/road/road.png" id="2_wbwsg"]
 [ext_resource type="PackedScene" uid="uid://xdqukx77lw12" path="res://Scenes/MiniGameOne/arrow_up.tscn" id="3_diihj"]
+[ext_resource type="Texture2D" uid="uid://cbcflos7t0isp" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_Grey_Up.png" id="4_diihj"]
 [ext_resource type="Texture2D" uid="uid://do7tscq6j2r2m" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_Grey_Right.png" id="4_uc641"]
-[ext_resource type="Texture2D" uid="uid://k7wfftw64cf2" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_White_Right.png" id="5_5rhpb"]
+[ext_resource type="Texture2D" uid="uid://4uhk8yvtk2ok" path="res://Assets/PianoTilesAssets/PlayerHoldingTissueBoxUp.png" id="5_uc641"]
 [ext_resource type="Texture2D" uid="uid://ce38w3xawvryi" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_Grey_Left_.png" id="6_lvu4i"]
-[ext_resource type="Texture2D" uid="uid://he88b8kqrx62" path="res://Assets/Mock_Assets/PianoTilesMock/Arrows_White_Left.png" id="7_iblnu"]
+[ext_resource type="Texture2D" uid="uid://nhba1p2wage2" path="res://Assets/PianoTilesAssets/PlayerHoldingTissueBoxRight.png" id="7_5rhpb"]
 [ext_resource type="PackedScene" uid="uid://divs3kucqcfph" path="res://Scenes/MiniGameOne/conductor.tscn" id="8_drbvf"]
 [ext_resource type="AudioStream" uid="uid://bbqhuiypbmulr" path="res://Music/Grieg In the Hall of the Mountain King.mp3" id="9_lnonw"]
+[ext_resource type="Texture2D" uid="uid://5k0mgc7sxnhi" path="res://Assets/PianoTilesAssets/PlayerHoldingTissueBoxLeft.png" id="9_lvu4i"]
 [ext_resource type="PackedScene" uid="uid://dno0dodlysjdo" path="res://Scenes/global.tscn" id="10_unjgb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iblnu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_diihj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uc641")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3plo5"]
 animations = [{
@@ -18,7 +34,7 @@ animations = [{
 "texture": ExtResource("4_uc641")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_5rhpb")
+"texture": ExtResource("7_5rhpb")
 }],
 "loop": true,
 "name": &"default",
@@ -32,7 +48,7 @@ animations = [{
 "texture": ExtResource("6_lvu4i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_iblnu")
+"texture": ExtResource("9_lvu4i")
 }],
 "loop": true,
 "name": &"default",
@@ -41,6 +57,7 @@ animations = [{
 
 [node name="TissueFallingPianoGame" type="Node2D" unique_id=1326813907]
 script = ExtResource("1_1xiuu")
+max_misses = 500
 
 [node name="YouFailedLabel" type="RichTextLabel" parent="." unique_id=1210436828]
 anchors_preset = 13
@@ -80,6 +97,7 @@ centered = false
 [node name="ArrowUp" parent="." unique_id=43299780 instance=ExtResource("3_diihj")]
 position = Vector2(306, 568)
 scale = Vector2(0.146, 0.146)
+sprite_frames = SubResource("SpriteFrames_iblnu")
 input = "camera_up"
 
 [node name="ArrowRight" parent="." unique_id=525090198 instance=ExtResource("3_diihj")]

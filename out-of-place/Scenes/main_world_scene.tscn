@@ -33,7 +33,7 @@ glow_enabled = true
 script = ExtResource("1_h8oru")
 
 [node name="Player" parent="." unique_id=1791364033 groups=["player"] instance=ExtResource("2_ka15s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.97371, 8.146785, -36.899727)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.674763, 8.146785, -36.899727)
 
 [node name="MiniGameHolder" type="CanvasLayer" parent="." unique_id=1559064045]
 

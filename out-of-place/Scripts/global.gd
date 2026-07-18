@@ -10,7 +10,11 @@ extends Node2D
 
 @export var first_convo_with_sadie:= false
 ##tissue piano tiles game needs to be true to collect tissues
+@export var met_sadie := false
 @export var has_tissue:= false
+
+
+@export var nate_first_convo := false
 
 var score = 0
 var combo = 0
