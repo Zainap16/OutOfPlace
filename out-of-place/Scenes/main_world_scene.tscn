@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://6fvimh6xyvsb" path="res://Scenes/black_screen_canvas_layer.tscn" id="12_2o51t"]
 [ext_resource type="PackedScene" uid="uid://bsxlgv1bh43c0" path="res://Scenes/Characters/Sadie.tscn" id="12_xiqbi"]
 [ext_resource type="PackedScene" uid="uid://bjqdm46jnrbwy" path="res://Scenes/boxes_stair_case.tscn" id="13_o07pp"]
+[ext_resource type="PackedScene" uid="uid://c5aovv0oejhw3" path="res://Scenes/Characters/Nate.tscn" id="14_mvdko"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m8omb"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -34,7 +35,7 @@ glow_enabled = true
 script = ExtResource("1_h8oru")
 
 [node name="Player" parent="." unique_id=1791364033 groups=["player"] instance=ExtResource("2_ka15s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.189156, 0.38395786, -36.899727)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.377956, 0.38395786, 25.910599)
 
 [node name="MiniGameHolder" type="CanvasLayer" parent="." unique_id=1559064045]
 
@@ -78,6 +79,8 @@ bob_advises_playr_of_sadie = ExtResource("11_2o51t")
 
 [node name="Sadie" parent="Characters" unique_id=108850910 instance=ExtResource("12_xiqbi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.812637, 8.782362, -39.99732)
+
+[node name="Nate" parent="Characters" unique_id=1670504276 instance=ExtResource("14_mvdko")]
 
 [node name="BlackScreenCanvasLayer" parent="." unique_id=1037047245 instance=ExtResource("12_2o51t")]
 

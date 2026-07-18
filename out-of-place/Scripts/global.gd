@@ -14,9 +14,6 @@ extends Node2D
 @export var has_tissue:= false
 
 
-
-
-
 # tornado
 @export var tissue_game_unlocked := false
 
