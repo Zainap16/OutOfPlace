@@ -14,12 +14,16 @@ extends Node2D
 @export var has_tissue:= false
 
 
-@export var nate_first_convo := false
+
 
 
 # tornado
 @export var tissue_game_unlocked := false
 
+
+#nate
+@export var nate_first_convo := false
+@export var player_has_lamp:= false
 var score = 0
 var combo = 0
 var great = 0

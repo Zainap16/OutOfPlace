@@ -39,6 +39,7 @@ directories/dtl_directory={
 "Everyone_and_choice": "res://Dialogue_/Timelines/Everyone_and_choice.dtl",
 "Player_finds_lamp_for_Nate": "res://Dialogue_/Timelines/Player_finds_lamp_for_Nate.dtl",
 "Player_found_Sadies_tissues": "res://Dialogue_/Timelines/Player_found_Sadies_tissues.dtl",
+"Player_intro_Nate": "res://Dialogue_/Timelines/Player_intro_Nate.dtl",
 "Player_offers_to_help_Sadie": "res://Dialogue_/Timelines/Player_offers_to_help_Sadie.dtl",
 "Sadies_advises_Player_of_Nate": "res://Dialogue_/Timelines/Sadies_advises_Player_of_Nate.dtl",
 "Sadies_gets_tissues_thanks_Player": "res://Dialogue_/Timelines/Sadies_gets_tissues_thanks_Player.dtl",
