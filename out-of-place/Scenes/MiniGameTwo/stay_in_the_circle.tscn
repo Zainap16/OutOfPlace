@@ -87,4 +87,6 @@ offset_right = 1477.0
 offset_bottom = 132.0
 theme_override_font_sizes/font_size = 70
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2119774354]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

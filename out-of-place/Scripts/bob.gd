@@ -5,7 +5,9 @@ extends Node3D
 @export var bob_advises_playr_of_sadie: DialogicTimeline
 var player_in_range := false
 @onready var interact_label: Label3D = $InteractLabel
- 
+@onready var form_3: MeshInstance3D = $"../../Player/BlobGuy_All_Forms-col/Form3"
+@onready var form_2: MeshInstance3D = $"../../Player/BlobGuy_All_Forms-col/Form2"
+
 var unlock_tissue_game := false
 var start_game_after_dialogue := false
 func _ready() -> void:
@@ -40,8 +42,8 @@ func interact():
 	elif Global.bob_apologized_to_player && Global.has_blanket:
 		Dialogic.start(bob_apologizes_to_player)
 		Global.bob_apologized_to_player = false
-		$"../../Player/BlobGuy_All_Forms-col/Form2".visible = true
-		$"../../Player/BlobGuy_All_Forms-col/Form1".visible = false
+		form_3.visible = true
+		form_2.visible = false
 	elif Global.first_convo_with_sadie:
 		unlock_tissue_game = true
 		Dialogic.start(bob_advises_playr_of_sadie)

@@ -6,6 +6,9 @@ extends Node3D
 var player_in_range := false
 @onready var interact_label: Label3D = $InteractLabel
 var dialogue_stage := 0
+@onready var form_3: MeshInstance3D = $"../../Player/BlobGuy_All_Forms-col/Form3"
+@onready var form_4: MeshInstance3D = $"../../Player/BlobGuy_All_Forms-col/Form4"
+@onready var form_3_holding_tissue_box_full: MeshInstance3D = $"../../Player/PlayerHoldingBoxes/Form3HoldingTissueBoxFull"
 
 
 func _ready() -> void:
@@ -37,6 +40,9 @@ func interact():
 		Dialogic.start(intro_to_sadie)
 	elif Global.has_tissue:
 		Dialogic.start(player_hands_tiisue_to_sadie)
+		form_3.visible = false
+		form_4.visible = true
+		
 		Global.has_tissue = false
 	elif Global.nate_first_convo:
 		Dialogic.start(sadie_advises_player_of_nate)

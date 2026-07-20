@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://c6sk8p3wsqtx0"]
+
+[ext_resource type="Script" uid="uid://dcqk6qog6pp1r" path="res://Scenes/main_menu.gd" id="1_48xlc"]
+[ext_resource type="Texture2D" uid="uid://cm2eohy3dr0pa" path="res://Assets/OutOfPlaceLogo2.png" id="2_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://u77tg6lwow7g" path="res://Scenes/main_world_scene.tscn" id="2_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://cb8854p6vhfk7" path="res://Assets/Instructions.jpg" id="4_ce3w2"]
+[ext_resource type="AudioStream" uid="uid://dbib4asb60r0o" path="res://Music/shidenbeatsmusic-birds39-forest-20772.mp3" id="5_n45e2"]
+
+[node name="MainMenu" type="Control" unique_id=673029689]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_48xlc")
+StartGame = ExtResource("2_ce3w2")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=125141150]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.43281692, 0.44720876, 0.20189199, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2126926631]
+position = Vector2(972, 331)
+texture = ExtResource("2_1ehe0")
+
+[node name="Panel" type="Panel" parent="." unique_id=251725677]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -355.0
+offset_top = -178.0
+offset_right = 355.0
+offset_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1517780498]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = 56.0
+offset_right = 125.0
+offset_bottom = 294.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="GridContainer" unique_id=12790064]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Start Game"
+
+[node name="ControlsButton" type="Button" parent="GridContainer" unique_id=2096129774]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Help
+"
+
+[node name="Instructions" type="Sprite2D" parent="." unique_id=1530494271]
+position = Vector2(851.99994, 539)
+scale = Vector2(0.5197305, 0.5197305)
+texture = ExtResource("4_ce3w2")
+
+[node name="ContinueButton" type="Button" parent="Instructions" unique_id=1847631426]
+offset_left = 336.7129
+offset_top = 858.1369
+offset_right = 526.7129
+offset_bottom = 906.1369
+scale = Vector2(1.8926864, 1.7549882)
+theme_override_font_sizes/font_size = 30
+text = "                          "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2102583833]
+stream = ExtResource("5_n45e2")
+autoplay = true
+
+[connection signal="pressed" from="GridContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="GridContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="Instructions/ContinueButton" to="." method="_on_continue_button_pressed"]

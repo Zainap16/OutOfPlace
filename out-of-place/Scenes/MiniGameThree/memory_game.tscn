@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ciriwklx3te2j" path="res://Assets/MemoryGameAssets/YellowButton.png" id="9_hodau"]
 [ext_resource type="Texture2D" uid="uid://c04n4x35mcr0c" path="res://Assets/MemoryGameAssets/BlueButtonPressed.png" id="10_pthqd"]
 [ext_resource type="Texture2D" uid="uid://wm40k8myseox" path="res://Assets/MemoryGameAssets/YellowButtonPressed.png" id="13_rdu30"]
+[ext_resource type="AudioStream" uid="uid://bx6120rg2nbse" path="res://Music/stay_in_circle.mp3" id="15_sluwa"]
 
 [node name="MemoryGame" type="Control" unique_id=1526977400]
 layout_mode = 3
@@ -123,6 +124,10 @@ offset_right = 30.67177
 offset_bottom = 9.39761
 theme_override_font_sizes/font_size = 5
 text = "GAME OVER"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer2D" parent="." unique_id=1669605762]
+stream = ExtResource("15_sluwa")
+autoplay = true
 
 [connection signal="pressed" from="Buttons/Red" to="PatternManager" method="_on_red_pressed"]
 [connection signal="pressed" from="Buttons/Green" to="PatternManager" method="_on_green_pressed"]

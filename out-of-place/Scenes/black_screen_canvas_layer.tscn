@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://2iwei2dtm1u8" path="res://Scripts/mini_puzzles.gd" id="1_3skxv"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3skxv"]
+bg_color = Color(0.41454205, 0.68004817, 0.33041656, 1)
+
 [node name="BlackScreenCanvasLayer" type="CanvasLayer" unique_id=1037047245]
 layer = 0
 script = ExtResource("1_3skxv")
@@ -13,3 +16,38 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="StatusText" type="RichTextLabel" parent="." unique_id=1936075761]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.5
+offset_top = -34.0
+offset_right = 193.5
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[wave]Taking a deep breath...[/wave]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CalmBar" type="ProgressBar" parent="." unique_id=435907527]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -181.0
+offset_top = -491.0
+offset_right = 222.0
+offset_bottom = -399.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/fill = SubResource("StyleBoxFlat_3skxv")

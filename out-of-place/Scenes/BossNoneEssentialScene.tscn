@@ -102,7 +102,9 @@ _data = {
 &"cam": SubResource("Animation_m4mvt")
 }
 
-[node name="BossNoneEssentialScene" type="Node3D" unique_id=1657673530]
+[node name="BossNoneEssentialScene" type="Control" unique_id=281122608]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_jafwd")
 main_world_scene = ExtResource("2_m4mvt")
 
@@ -111,33 +113,42 @@ environment = SubResource("Environment_g7ql0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=164979240]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
 shadow_enabled = true
 
 [node name="OfficeRoom_V001-col" parent="." unique_id=510859555 instance=ExtResource("1_xcglm")]
+visible = false
 
 [node name="CameraManager" type="Node3D" parent="." unique_id=1055723854]
+visible = false
 
 [node name="PlayerCam" type="Camera3D" parent="CameraManager" unique_id=1789079505]
 transform = Transform3D(-0.8627786, 0, -0.50558203, 0, 1, 0, 0.50558203, 0, -0.8627786, -1.0680629, 1.3081003, -0.6548743)
+current = true
 
 [node name="BossCam" type="Camera3D" parent="CameraManager" unique_id=1733907343]
 transform = Transform3D(0.7170566, 0, -0.6970149, 0, 1, 0, 0.6970149, 0, 0.7170566, -0.9781699, 1.8525989, -5.5261955)
+visible = false
 
 [node name="BothCam" type="Camera3D" parent="CameraManager" unique_id=1277199262]
 transform = Transform3D(0.52860135, 0, -0.8488702, 0, 1, 0, 0.8488702, 0, 0.52860135, -3.4792244, 0.7800076, 0.05075121)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CameraManager/BothCam" unique_id=409675888]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CameraManager/BothCam/CanvasLayer" unique_id=1545578078]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
+metadata/_edit_use_anchors_ = true
 
 [node name="BossLabelDialogue" type="Label3D" parent="." unique_id=880199893]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5038792, 2.2166016, -6.0319953)
+visible = false
 billboard = 2
 text = "Citizen 4589-C for the accusation of 
 being non-essential i find you guilty"
@@ -146,6 +157,7 @@ autowrap_mode = 3
 
 [node name="PlayerDialogue" type="Label3D" parent="." unique_id=845039435]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0832715, 1.5086336, 0.26838857)
+visible = false
 billboard = 2
 text = "I am essential..."
 font_size = 15
@@ -153,3 +165,8 @@ autowrap_mode = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1759271581]
 libraries/ = SubResource("AnimationLibrary_g7ql0")
+
+[node name="OpeningScene" type="VideoStreamPlayer" parent="." unique_id=1573699419]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

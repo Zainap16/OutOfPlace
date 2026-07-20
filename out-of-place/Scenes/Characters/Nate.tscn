@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://byfdsg5awg8ov" path="res://Scenes/Characters/nate.gd" id="1_dpapp"]
 [ext_resource type="Resource" uid="uid://cs153mo7gc8ln" path="res://Dialogue_/Timelines/Player_intro_Nate.dtl" id="2_eiwwy"]
 [ext_resource type="Resource" uid="uid://c8340rgll27un" path="res://Dialogue_/Timelines/Player_finds_lamp_for_Nate.dtl" id="3_f4moe"]
+[ext_resource type="Resource" uid="uid://de47xol00316a" path="res://Dialogue_/Timelines/Everyone_and_choice.dtl" id="4_f4moe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhptn"]
 albedo_color = Color(0.58660746, 0.120466, 0.89757437, 1)
@@ -14,6 +15,7 @@ radius = 2.1401346
 script = ExtResource("1_dpapp")
 intro_to_nate = ExtResource("2_eiwwy")
 play_hands_lamp_to_nate = ExtResource("3_f4moe")
+final_choice_end = ExtResource("4_f4moe")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1925160512]
 material = SubResource("StandardMaterial3D_nhptn")

@@ -65,9 +65,3 @@ func set_box_visual(has_box: bool):
 
 	normal.visible = !has_box
 	holding.visible = has_box
-
-#func _set_animation():
-	#if velocity.x:
-		#animation_player.play("Running_A")
-	#else:
-		#animation_player.play("Idle")

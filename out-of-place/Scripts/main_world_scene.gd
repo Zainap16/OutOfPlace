@@ -2,10 +2,15 @@ extends Node3D
 
 @onready var mini_game_holder: CanvasLayer = $MiniGameHolder
 @onready var black_screen_canvas_layer: CanvasLayer = $BlackScreenCanvasLayer
+@onready var loading_text: RichTextLabel = $BlackScreenCanvasLayer/StatusText
+@onready var calm_bar: ProgressBar = $BlackScreenCanvasLayer/CalmBar
+
+@onready var cut_scene_2: VideoStreamPlayer = $CutScene2
 
 @onready var camera_pivot: Node3D = $cameraPivot
 
 @export var excluded: Array[Node3D] = []
+@onready var anxiety_meter: CanvasLayer = $AnxietyMeter
 
 var mini_game_one_piano_tiles = preload("res://Scenes/MiniGameOne/paper_falling_game.tscn")
 var mini_game_circle = preload("res://Scenes/MiniGameTwo/stay_in_the_circle.tscn")
@@ -30,6 +35,8 @@ func _ready() -> void:
 	else:
 		black_screen_canvas_layer.visible = false
 		return
+	loading_text.visible = false
+	calm_bar.visible = false
 
 func _input(event: InputEvent) -> void:
 	if playing_minigame:
@@ -73,10 +80,11 @@ func start_piano_tiles():
 	playing_minigame = true
 
 	current_minigame = mini_game_one_piano_tiles.instantiate()
+	
 	mini_game_holder.add_child(current_minigame)
 
 	current_minigame.game_finished.connect(close_current_minigame)
-
+	
 	var player = get_tree().get_first_node_in_group("player")
 	player.movement_enabled = false
 	player.targetPosition = Vector3.ZERO
@@ -91,8 +99,12 @@ func finish_intro():
 	camera_pivot.controls_enabled = true
 
 	playing_minigame = false
-	await get_tree().create_timer(4.0).timeout
+#	add CutScene 2 here
+	await calming_transition()
+
 	black_screen_canvas_layer.hide()
+	calm_bar.value = 0
+	loading_text.text = ""
 
 func close_current_minigame():
 
@@ -119,6 +131,7 @@ func start_circle_game():
 	playing_minigame = true
 
 	current_minigame = mini_game_circle.instantiate()
+
 	mini_game_holder.add_child(current_minigame)
 
 	current_minigame.game_finished.connect(close_current_minigame)
@@ -135,6 +148,7 @@ func start_memory_game():
 	playing_minigame = true
 
 	current_minigame = mini_game_memory_game.instantiate()
+
 	mini_game_holder.add_child(current_minigame)
 
 	#current_minigame.game_finished.connect(close_current_minigame)
@@ -153,34 +167,40 @@ func start_mini_games():
 	camera_pivot.controls_enabled = false
 
 	call_deferred("start_piano_tiles")
+	
+func calming_transition():
 
-#func start_tissue_game():
-#
-	#playing_minigame = true
-#
-	#current_minigame = tissue_game_piano.instantiate()
-	#mini_game_holder.add_child(current_minigame)
-#
-	#current_minigame.game_finished.connect(close_tissue_game)
-#
-	#var player = get_tree().get_first_node_in_group("player")
-	#player.movement_enabled = false
-	#player.targetPosition = Vector3.ZERO
-#
-	#camera_pivot.controls_enabled = false
-#
-#func close_tissue_game():
-#
-	#if current_minigame:
-		#current_minigame.queue_free()
-		#current_minigame = null
-#
-	#var player = get_tree().get_first_node_in_group("player")
-	#player.movement_enabled = true
-	#player.targetPosition = Vector3.ZERO
-#
-	#camera_pivot.controls_enabled = true
-#
-	#playing_minigame = false
-#
-	#Global.has_tissue = true
+	black_screen_canvas_layer.show()
+	loading_text.visible = true
+	calm_bar.visible = true
+	var messages = [
+		"Taking a deep breath...",
+		"Collecting your thoughts...",
+		"Grounding yourself...",
+		"Almost ready..."
+	]
+
+	calm_bar.value = 0
+
+	var duration := 4.0
+	var elapsed := 0.0
+	var message_index := 0
+
+	loading_text.text = messages[0]
+
+	while elapsed < duration:
+		await get_tree().process_frame
+
+		elapsed += get_process_delta_time()
+
+		var progress = elapsed / duration
+		calm_bar.value = progress * 100
+
+		var new_index = min(int(progress * messages.size()), messages.size() - 1)
+
+		if new_index != message_index:
+			message_index = new_index
+			loading_text.text = messages[message_index]
+	calm_bar.value = 100
+	loading_text.text = "Ready."
+	await get_tree().create_timer(0.5).timeout

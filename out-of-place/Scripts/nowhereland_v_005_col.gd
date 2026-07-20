@@ -117,6 +117,7 @@ func _on_tissue_game_area_body_entered(body: Node3D) -> void:
 func _on_game_finished():
 
 	Global.has_tissue = true
+	
 	Global.tissue_game_unlocked = false
 
 	if current_game:
