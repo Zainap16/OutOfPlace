@@ -4,13 +4,3 @@
 
 [node name="Global" type="Node2D" unique_id=466138978]
 script = ExtResource("1_koean")
-get_insulted_by_bob = true
-bob_apologized_to_player = true
-stacked_all_boxes = true
-has_blanket = true
-first_convo_with_sadie = true
-met_sadie = true
-has_tissue = true
-tissue_game_unlocked = true
-nate_first_convo = true
-player_has_lamp = true

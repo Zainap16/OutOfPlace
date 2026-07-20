@@ -14,7 +14,7 @@ config/name="Out_Of_Place"
 config/tags=PackedStringArray("discojam")
 run/main_scene="uid://c6sk8p3wsqtx0"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://cm2eohy3dr0pa"
 
 [autoload]
 
